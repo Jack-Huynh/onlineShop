@@ -1,0 +1,4 @@
+-  echo "<pre>";
+   print_r($myArray);
+   echo "</pre>";
+-  include '../Helper/databaseHelper.php';
