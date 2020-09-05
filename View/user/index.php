@@ -7,6 +7,10 @@
 		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 		  <script src=""></script>
+		  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  		  <link href="css/simple-sidebar.css" rel="stylesheet">
 	</head>
 	<style type="text/css">
 		.container{
@@ -18,7 +22,8 @@
 		    include '../../Controller/userController.php';
 			$userArray = loadUsersData();
 		?>
-		<div class="container">
+		
+		<div class="container" style="margin-left:25%">
 			<table class="table">
 				<thead>
 					<th>CustomerID</th>
@@ -49,6 +54,9 @@
 					?>
 				</tbody>
 		</table>
+		<a href="http://localhost/onlineShop/onlineShop/View/user/create.php"><button type="button" style="width: 80px" class="btn btn-info btn-add">
+				<h4>ADD</h4>
+		</button></a>
 		</div>
 	</body>
 </html>
