@@ -2,3 +2,4 @@
    print_r($myArray);
    echo "</pre>";
 -  include '../Helper/databaseHelper.php';
+-  test :  http://localhost/onlineShop/onlineShop/Model/userModel.php
