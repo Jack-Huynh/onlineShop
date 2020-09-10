@@ -37,7 +37,7 @@
 			</div>
 			<div class="form-group">
 				<label for="textbox" style="text-align: left;">Postcode: </label>
-				<input type="text" name="Postalcode" class="form-control" id="Postalcode">
+				<input type="text" name="PostalCode" class="form-control" id="Postalcode">
 			</div>
 			<div class="form-group">
 				<label for="textbox" style="text-align: left;">Country: </label>
