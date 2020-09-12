@@ -2,6 +2,13 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src=""></script>
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -21,7 +28,7 @@ body {
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -30,7 +37,7 @@ input[type=text], input[type=password] {
   background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -71,21 +78,32 @@ a {
 </head>
 <body>
 
-<form action="/action_page.php">
+<form action="../../Controller/loginController.php?action=register" method="POST">
   <div class="container">
     <h1>Register</h1>
     <p>Please fill in this form to create an account.</p>
     <hr>
 
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+    <input type="email" placeholder="Enter Email" name="email" id="email" required>
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
-
+    <input type="password" placeholder="Repeat Password" name="repsw" id="repsw" required>
+    <?php
+      $error='';
+      if(isset($_GET["error"])){
+        $error=$_GET["error"];
+      }
+      if($error==1) {
+        echo '<div class="alert alert-danger"><strong>Please enter correct repassword</strong></div>';
+      }
+      if($error==2) {
+        echo '<div class="alert alert-danger"><strong>Password more than 6 chars and less than 10 chars</strong></div>';
+      }
+    ?>
     <button type="submit" class="registerbtn">Register</button>
   </div>
   
