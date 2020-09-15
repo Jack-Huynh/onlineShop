@@ -103,6 +103,9 @@ a {
       if($error==2) {
         echo '<div class="alert alert-danger"><strong>Password more than 6 chars and less than 10 chars</strong></div>';
       }
+      if($error==3) {
+        echo '<div class="alert alert-danger"><strong>Email has exist!</strong></div>';
+      }
     ?>
     <button type="submit" class="registerbtn">Register</button>
   </div>
