@@ -33,6 +33,8 @@
 
     <!-- Sidebar -->
     <?php
+        include '../../Helper/functionHelper.php';
+        verifyLogin();
         include '../../View/main/sidebar.php';
     ?>
     <!-- /#sidebar-wrapper -->

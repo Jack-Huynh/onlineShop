@@ -16,7 +16,20 @@
 		
 	}
 
-	function checkExistEmailModel($email){
+	function checkAccountModel($email, $psw) {
+		include '../Helper/databaseHelper.php';
+		$query = 'SELECT * FROM admin WHERE admin.Email = "'.$email.'" AND admin.Password = "'.$psw.'" ';
+		$conn = connectToDB();
+		$result = mysqli_query($conn, $query);
+		disconnectToDB($conn);
+		if(mysqli_num_rows($result)>0){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function checkExistEmailModel($email) {
 		$query = 'SELECT * FROM admin WHERE admin.Email = "'.$email.'"';
 		$conn = connectToDB();
 		$result = mysqli_query($conn, $query);

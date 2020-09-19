@@ -2,6 +2,14 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src=""></script>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
@@ -69,15 +77,13 @@ span.psw {
 </style>
 </head>
 <body>
-
-
-<form action="/action_page.php" method="post">
+<form action="../../Controller/loginController.php?action=login" method="post">
   <div class="imgcontainer">
     <img src="http://localhost/onlineShop/onlineShop/Image/img_avatar2.png" alt="Avatar" class="avatar">
   </div>
   <div class="container">
     <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <input type="text" placeholder="Enter Email" name="email" required>
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
@@ -86,8 +92,24 @@ span.psw {
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
+    <?php
+          $error='';
+          $login= '';
+          if(isset($_GET["error"])){
+            $error=$_GET["error"];
+          }
+          if(isset($_GET["login"])){
+            $login=$_GET["login"];
+          }
+          if($error==1) {
+            echo '<div class="alert alert-danger"><strong>Wrong email or password</strong></div>';
+          }
+          if($login == "success"){
+            echo '<div class="alert alert-info"><strong>Register success!</strong></div>';
+          }
+    ?>
   </div>
-
+  
   <div class="container" style="background-color:#f1f1f1">
     <a href="http://localhost/onlineShop/onlineShop/View/login/registerPage.php">
       <button type="button" class="signUpbtn">Sign up</button>

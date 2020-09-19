@@ -15,9 +15,20 @@
 	if(isset($_GET["action"])) {
 		$action=$_GET["action"];
 	}
+
 	if($action=="register") {
 		createAdmin($email, $psw, $repsw);
+	} else if ($action=="login") {
+		checkLogin($email, $psw);
 	}
+	//echo "hii";
+	if($action=="logOut"){
+		session_start();
+		unset($_SESSION["checkLogin"]);
+		unset($_SESSION["name"]);
+		header("Location:http://localhost/onlineShop/onlineShop/View/login/loginPage.php");
+	}
+
 	function createAdmin($email, $psw, $repsw) {
 		include '../Model/adminModel.php';
 		if($psw != $repsw) {
@@ -27,10 +38,22 @@
 		} else {
 			$result = registerUserModel($email, $psw);
 			if($result == 2) {
-				header("Location: http://localhost/onlineShop/onlineShop/View/login/loginPage.php");
+				header("Location: http://localhost/onlineShop/onlineShop/View/login/loginPage.php?login=success");
 			} else if ($result == 3) {
 				header("Location: http://localhost/onlineShop/onlineShop/View/login/registerPage.php?error=3");
 			}
+		}
+	}
+
+	function checkLogin ($email, $psw) {
+		include '../Model/adminModel.php';
+		if(checkAccountModel($email, $psw)){
+			session_start();
+			$_SESSION["checkLogin"]=true;
+			$_SESSION["name"]=$name;
+			header("Location: http://localhost/onlineShop/onlineShop/View/user/");
+		}else{
+			header("Location: http://localhost/onlineShop/onlineShop/View/login/loginPage.php?error=1");
 		}
 	}
 ?>
