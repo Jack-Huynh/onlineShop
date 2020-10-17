@@ -3,7 +3,8 @@
   <div class="sidebar-heading">Start Bootstrap </div>
   <div class="list-group list-group-flush">
     <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-    <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
+    <a href="http://localhost/onlineShop/onlineShop/View/user/" class="list-group-item list-group-item-action bg-light">Customers</a>
+    <a href="http://localhost/onlineShop/onlineShop/View/admin/" class="list-group-item list-group-item-action bg-light">Admins</a>
     <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
     <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
     <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>

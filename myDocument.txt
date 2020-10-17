@@ -4,3 +4,5 @@
 -  include '../Helper/databaseHelper.php';
 -  test :  http://localhost/onlineShop/onlineShop/Model/userModel.php
 -  http://localhost/onlineShop/onlineShop/CSS/bootstrap.min.css
+-  ajax : url:"/onlineShop/onlineShop/Controller/adminController.php?action=loadPage"
+-  how to config sendmail.ini : https://123host.vn/tailieu/kb/vps/huong-dan-cau-hinh-gui-mail-bang-php-cho-xampp.html

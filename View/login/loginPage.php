@@ -83,14 +83,16 @@ span.psw {
   </div>
   <div class="container">
     <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <input type="text" placeholder="Enter Email" name="email" value="<?php 
+            echo isset($_COOKIE["saveUser"]) ? $_COOKIE["saveUser"] : '' ?>" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="psw" value="<?php 
+            echo isset($_COOKIE["savePassword"]) ? $_COOKIE["savePassword"] : '' ?>" required>
         
     <button type="submit">Login</button>
     <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
+      <input type="checkbox" name="remember"> Remember me
     </label>
     <?php
           $error='';
