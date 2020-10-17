@@ -1,8 +1,7 @@
 <!-- Sidebar -->
 <div class="bg-light border-right" id="sidebar-wrapper">
   <div class="sidebar-heading">Start Bootstrap </div>
-  <div class="list-group list-group-flush">
-    <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+  <div class="list-group list-group-flush" style="position: relative; z-index: 2;">
     <a href="http://localhost/onlineShop/onlineShop/View/user/" class="list-group-item list-group-item-action bg-light">Customers</a>
     <a href="http://localhost/onlineShop/onlineShop/View/admin/" class="list-group-item list-group-item-action bg-light">Admins</a>
     <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
