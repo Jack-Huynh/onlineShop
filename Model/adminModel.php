@@ -5,7 +5,8 @@
 		if(!checkExistEmailModel($email)) {
 			return 3;
 		}
-		$query='INSERT INTO admin(Email, Password) VALUES("'.$email.'","'.$psw.'")';
+		$secCode=mt_rand(100000,999999);
+		$query='INSERT INTO admin(Email, Password, secCode) VALUES("'.$email.'","'.$psw.'",'.$secCode.')';
 		$result = mysqli_query($conn, $query);
 		disconnectToDB($conn);
 		if ($result) {
@@ -55,10 +56,10 @@
 		return $userArray;
 	}
 
-	function changeStatusModel($adminID){
+	function changeStatusModel($adminID, $secCode){
 		include '../Helper/databaseHelper.php';
 		$conn = connectToDB();
-		$sql='Update admin SET Status = 1 WHERE ID='.$adminID.'';
+		$sql='Update admin SET Status = 1 WHERE ID='.$adminID.' AND secCode='.$secCode.'';
 		$result = mysqli_query($conn, $sql);
 		disconnectToDB($conn);
 		return $result;
@@ -76,6 +77,27 @@
 		}
 		disconnectToDB($conn);
 		return $userArray;
-		
+	}
+
+	function getAdminModelByEmail($email) {
+		include '../Helper/databaseHelper.php';
+		$conn = connectToDB();
+		$sql='SELECT * FROM admin WHERE Email = "'.$email.'"';
+		$result = mysqli_query($conn, $sql);
+		$userArray = array();
+		if (mysqli_num_rows($result)>0) {
+			$row=mysqli_fetch_assoc($result);
+			array_push($userArray, $row);
+		}
+		disconnectToDB($conn);
+		return $userArray;
+	}
+
+	function resetPasswordModel($adminID, $newPassword){
+		include '../Helper/databaseHelper.php';
+		$conn = connectToDB();
+		$sql='Update admin SET Password = "'.$newPassword.'" WHERE ID='.$adminID.'';
+		$result = mysqli_query($conn, $sql);
+		disconnectToDB($conn);
 	}
 ?>

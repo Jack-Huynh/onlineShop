@@ -77,46 +77,15 @@ span.psw {
 </style>
 </head>
 <body>
-<form action="../../Controller/loginController.php?action=login" method="post">
+<form action="../../Controller/adminController.php?action=resetPassword" method="post">
   <div class="imgcontainer">
     <img src="http://localhost/onlineShop/onlineShop/Image/img_avatar2.png" alt="Avatar" class="avatar">
   </div>
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Email" name="email" value="<?php 
-            echo isset($_COOKIE["saveUser"]) ? $_COOKIE["saveUser"] : '' ?>" required>
+    <label for="uname"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" value="<?php 
-            echo isset($_COOKIE["savePassword"]) ? $_COOKIE["savePassword"] : '' ?>" required>
-        
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" name="remember"> Remember me
-    </label>
-    <?php
-          $error='';
-          $login= '';
-          if(isset($_GET["error"])){
-            $error=$_GET["error"];
-          }
-          if(isset($_GET["login"])){
-            $login=$_GET["login"];
-          }
-          if($error==1) {
-            echo '<div class="alert alert-danger"><strong>Wrong email or password</strong></div>';
-          }
-          if($login == "success"){
-            echo '<div class="alert alert-info"><strong>Register success!</strong></div>';
-          }
-    ?>
-  </div>
-  
-  <div class="container" style="background-color:#f1f1f1">
-    <a href="http://localhost/onlineShop/onlineShop/View/login/registerPage.php">
-      <button type="button" class="signUpbtn">Sign up</button>
-    </a>
-    <span class="psw">Forgot <a href="http://localhost/onlineShop/onlineShop/View/login/forgotPassword.php">password?</a></span>
+    <button type="submit" class="signUpbtn">Submit</button>
   </div>
 </form>
 

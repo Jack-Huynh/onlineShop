@@ -16,7 +16,11 @@ function loadPage(){
 				save+='<td>'+result[i].Email+'</td>';
 				save+='<td>'+result[i].Password+'</td>';
 				save+='<td>'+result[i].Status+'</td>';
-				save+='<td><button class="btn btn-info sentMail" value="'+result[i].ID+'">SENT MAIL</button></td>';
+				if( result[i].Status==1 ) {
+					save+='<td><button class="btn btn-primary sentMail" value="'+result[i].ID+'" disabled>SENT</button></td>';
+				}else {
+					save+='<td><button class="btn btn-info sentMail" value="'+result[i].ID+'">SEND MAIL</button></td>';
+				}	
 				save+='</tr>';
 			}
 			$('tbody').html(save);
