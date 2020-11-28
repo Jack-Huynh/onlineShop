@@ -13,10 +13,10 @@
 		disconnectToDB($conn);
 		return $productsArray;
 	}
-	function createProductsModel($productsName, $description) {
+	function createProductsModel($productName, $supplierID, $categoryID, $price, $image) {
 		include '../Helper/databaseHelper.php';
 		$conn = connectToDB();
-		$query='INSERT INTO product(ProductName, Description) VALUES("'.$productsName.'","'.$description.'")';
+		$query='INSERT INTO product(ProductName, SupplierID, CategoryID, Price, Image) VALUES("'.$productName.'","'.$supplierID.'","'.$categoryID.'","'.$price.'","'.$image.'")';
 
 		$result = mysqli_query($conn, $query);
 		disconnectToDB($conn);
