@@ -99,7 +99,7 @@
                     echo "<td>".$productsArray[$i]['CategoryName']."</td>";
                     echo "<td>".$productsArray[$i]['Price']."</td>";
                     echo '<td><img src="http://localhost/onlineShop/onlineShop/Image/products/'.$productsArray[$i]['Image'].'" width="120" height="110"><td>';
-                    echo '<td class="actionButton">'.'<a href="http://localhost/onlineShop/onlineShop/View/products/update.php?id='.$productsArray[$i]['ProductID'].'"><button type="button" style="" class="btn btn-info btn-update">UPDATE</button></a>';
+                    echo '<td class="actionButton">'.'<a href="http://localhost/onlineShop/onlineShop/View/product/update.php?id='.$productsArray[$i]['ProductID'].'"><button type="button" style="" class="btn btn-info btn-update">UPDATE</button></a>';
                     echo '<a style="margin-left: 2px" href="http://localhost/onlineShop/onlineShop/Controller/productsController.php?action=delete&id='.$productsArray[$i]['ProductID'].'"><button type="button" class="btn btn-danger btn-del">DELETE</button></a>'."</td>";
                     echo "</tr>";
                 }

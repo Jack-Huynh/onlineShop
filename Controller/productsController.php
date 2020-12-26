@@ -13,7 +13,7 @@
 		$productID=$_GET["id"];
 	}
 	if(isset($_POST["productID"])){
-		$productID=$_POST["productID"];
+		$productID_=$_POST["productID"];
 	}
 	if(isset($_POST["productName"])){
 		$productName=$_POST["productName"];
@@ -41,27 +41,27 @@
 		createProductsModel($productName, $supplierID, $categoryID, $price, $image);
 		header("Location: http://localhost/onlineShop/onlineShop/View/product/");
 	}
-	function getProductsInfo($productID){
+	function getProductsInfo($productID, $flagConn, $flagDisconn){
 		include '../../Model/productsModel.php';
 		$Array = array();
-		$Array = getproductsInfoModel($productID);
+		$Array = getproductsInfoModel($productID, $flagConn, $flagDisconn);
 		return $Array;
 	}
-	function updateProducts($productID, $productName, $description) {
+	function updateProducts($productID_, $productName, $supplierID, $categoryID, $price, $image) {
 		include '../Model/productsModel.php';
-		updateProductsModel($productsID, $productsName, $description);
+		updateProductsModel($productID_, $productName, $supplierID, $categoryID, $price, $image);
 		header("Location: http://localhost/onlineShop/onlineShop/View/product/");
 	}
 	function deleteProducts($productID) {
 		include '../Model/productsModel.php';
-		deleteProductsModel($productsID);
+		deleteProductsModel($productID);
 		header("Location: http://localhost/onlineShop/onlineShop/View/product/");
 	}
 	if ($action=="create") {
 		createProducts($productName, $supplierID, $categoryID, $price, $image);
 	} else if($action=="update") {
-		updateProducts($productsID, $productsName, $description);
+		updateProducts($productID_, $productName, $supplierID, $categoryID, $price, $image);
 	} else if($action=="delete") {
-		deleteProducts($productsID);
+		deleteProducts($productID);
 	}
 ?>

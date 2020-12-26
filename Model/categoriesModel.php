@@ -1,7 +1,15 @@
 <?php
-	function getCategories() {
-		include '../../Helper/databaseHelper.php';
-		$conn = connectToDB();
+	function getCategories($flagConn, $flagDisconn) {
+		if($flagConn) {
+			include '../../Helper/databaseHelper.php';
+			$conn = connectToDB();
+		} else {
+			$hostname='localhost';
+			$username='root';
+			$password='';
+			$dbname='myonlineshop';
+			$conn=mysqli_connect($hostname, $username, $password, $dbname);
+		}
 		$sql='SELECT * FROM categories';
 		$result = mysqli_query($conn, $sql);
 		$categoriesArray = array();
@@ -10,7 +18,9 @@
 				array_push($categoriesArray, $row);
 			}
 		}
-		disconnectToDB($conn);
+		if($flagDisconn){
+			disconnectToDB($conn);
+		}
 		return $categoriesArray;
 	}
 	function createCategoriesModel($categoriesName, $description, $parentID) {
@@ -22,9 +32,11 @@
 		disconnectToDB($conn);
 		return $result;
 	}
-	function getCategoriesInfoModel($categoriesID){
+	function getCategoriesInfoModel($categoriesID, $flagConn, $flagDisconn){
 		include '../../Helper/databaseHelper.php';
-		$conn = connectToDB();
+		if ($flagConn) {
+			$conn = connectToDB();
+		}
 		$sql='SELECT * FROM categories WHERE CategoryID = '.$categoriesID.'';
 		$result = mysqli_query($conn, $sql);
 		$Array = array();
@@ -33,7 +45,10 @@
 				array_push($Array, $row);
 			}
 		}
-		disconnectToDB($conn);
+		if ($flagDisconn) {
+			disconnectToDB($conn);
+		}
+		
 		return $Array;	
 	}
 	function updateCategoriesModel($categoriesID, $categoriesName, $description, $parentID) {

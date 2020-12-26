@@ -22,9 +22,11 @@
 		disconnectToDB($conn);
 		return $result;
 	}
-	function getProductsInfoModel($productsID){
+	function getProductsInfoModel($productsID, $flagConn, $flagDisconn){
 		include '../../Helper/databaseHelper.php';
-		$conn = connectToDB();
+		if($flagConn){
+			$conn = connectToDB();
+		}
 		$sql='SELECT * FROM product WHERE ProductID = '.$productsID.'';
 		$result = mysqli_query($conn, $sql);
 		$Array = array();
@@ -33,22 +35,24 @@
 				array_push($Array, $row);
 			}
 		}
-		disconnectToDB($conn);
+		if($flagDisconn){
+			disconnectToDB($conn);
+		}
 		return $Array;	
 	}
-	function updateProductsModel($productsID, $productsName, $description) {
+	function updateProductsModel($productID, $productName,  $supplierID, $categoryID, $price, $image) {
 		include '../Helper/databaseHelper.php';
 		$conn = connectToDB();
-		$query = 'UPDATE product SET ProductName = "'.$productsName.'", Description = "'.$description.'"  WHERE ProductID = '.$productsID.'';
+		$query = 'UPDATE product SET ProductName = "'.$productName.'", SupplierID = "'.$supplierID.'", CategoryID = "'.$categoryID.'", Price = "'.$price.'", Image = "'.$image.'"  WHERE ProductID = '.$productID.'';
 
 		$result = mysqli_query($conn, $query);
 		disconnectToDB($conn);
-		return $result;
+		return $query;
 	}
-	function deleteProductsModel($productsID) {
+	function deleteProductsModel($productID) {
 		include '../Helper/databaseHelper.php';
 		$conn = connectToDB();
-		$query='DELETE FROM product WHERE ProductID='.$productsID.'';
+		$query='DELETE FROM product WHERE ProductID='.$productID.'';
 		$result = mysqli_query($conn, $query);
 		disconnectToDB($conn);
 		return $result;

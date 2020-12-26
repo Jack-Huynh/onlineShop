@@ -21,7 +21,7 @@
         if(isset($_GET["id"])){
 			$categoriesID=$_GET["id"];
 		}
-        $Array = getCategoriesInfo($categoriesID);
+        $Array = getCategoriesInfo($categoriesID, true, true);
      ?>
 	<h1 style="text-align: center">UPDATE</h1>
 	<div class="container">

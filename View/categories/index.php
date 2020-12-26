@@ -76,7 +76,7 @@
       <div class="container-fluid">
         <?php 
             include '../../Controller/categoriesController.php';
-            $categoriesArray = loadCategoriesData();
+            $categoriesArray = loadCategoriesData(true, true);
         ?>
         
         <div class="container" style="margin-left:25%">

@@ -22,10 +22,10 @@
 	if(isset($_POST["description"])){
 		$description=$_POST["description"];
 	}
-	function loadCategoriesData() {
+	function loadCategoriesData($flagConn, $flagDisconn) {
 		include '../../Model/categoriesModel.php';
 		$categoriesArray = array();
-		$categoriesArray = getCategories();
+		$categoriesArray = getCategories($flagConn, $flagDisconn);
 		return $categoriesArray;
 	}
 	function createCategories($categoriesName, $description, $parentID) {
@@ -33,10 +33,10 @@
 		createCategoriesModel($categoriesName, $description, $parentID);
 		header("Location: http://localhost/onlineShop/onlineShop/View/categories/");
 	}
-	function getCategoriesInfo($categoriesID){
+	function getCategoriesInfo($categoriesID, $flagConn, $flagDisconn) {
 		include '../../Model/categoriesModel.php';
 		$Array = array();
-		$Array = getCategoriesInfoModel($categoriesID);
+		$Array = getCategoriesInfoModel($categoriesID, $flagConn, $flagDisconn);
 		return $Array;
 	}
 	function updateCategories($categoriesID, $categoriesName, $description, $parentID) {
