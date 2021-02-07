@@ -1,3 +1,4 @@
+
 <?php 
 	function getUsers () {
 		include '../../Helper/databaseHelper.php';

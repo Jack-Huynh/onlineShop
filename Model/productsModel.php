@@ -57,4 +57,32 @@
 		disconnectToDB($conn);
 		return $result;
 	}
+	function searchProductsModel($productName, $categoryName, $fromPrice, $toPrice) {
+		include '../Helper/databaseHelper.php';
+		$conn = connectToDB();
+
+		$sql='SELECT * FROM product, categories WHERE product.CategoryID = categories.CategoryID';
+		if ($productName != '') {
+			$sql.=' AND ProductName="'.$productName.'" ';
+		}
+		if ($categoryName != '') {
+			$sql.=' AND CategoryName="'.$categoryName.'" ';
+		}
+		if ($fromPrice != '') {
+			$sql.=' AND Price>="'.$fromPrice.'" ';
+		}
+		if ($toPrice != '') {
+			$sql.=' AND Price<="'.$toPrice.'" ';
+		}
+
+		$result = mysqli_query($conn, $sql);
+		$productsArray = array();
+		if (mysqli_num_rows($result)>0) {
+			while ($row=mysqli_fetch_assoc($result)) {
+				array_push($productsArray, $row);
+			}
+		}
+		disconnectToDB($conn);
+		return $productsArray;
+	}
 ?>
