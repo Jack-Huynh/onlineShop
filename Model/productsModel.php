@@ -40,6 +40,24 @@
 		}
 		return $Array;	
 	}
+	function getProductsInfoModel2($productsID, $flagConn, $flagDisconn){
+		include '../Helper/databaseHelper.php';
+		if($flagConn){
+			$conn = connectToDB();
+		}
+		$sql='SELECT * FROM product WHERE ProductID = '.$productsID.'';
+		$result = mysqli_query($conn, $sql);
+		$Array = array();
+		if (mysqli_num_rows($result)>0) {
+			while ($row=mysqli_fetch_assoc($result)) {
+				array_push($Array, $row);
+			}
+		}
+		if($flagDisconn){
+			disconnectToDB($conn);
+		}
+		return $Array;	
+	}
 	function updateProductsModel($productID, $productName,  $supplierID, $categoryID, $price, $image) {
 		include '../Helper/databaseHelper.php';
 		$conn = connectToDB();

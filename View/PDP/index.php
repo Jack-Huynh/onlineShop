@@ -8,8 +8,7 @@
 	    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		  <script src="http://localhost/onlineShop/onlineShop/JavaScript/PLPjavascript.js"></script>
-			<script src="http://localhost/onlineShop/onlineShop/JavaScript/search.js"></script>
+	      <script src="http://localhost/onlineShop/onlineShop/JavaScript/search.js"></script>
 		<style type="text/css">
 		  	.container{
 		  		border: solid;
@@ -31,17 +30,20 @@
 		  		margin-left: 500px;
 		  		margin-bottom: 50px;
 		  	}
-		  
+		    .detail{
+		    	font-size: 35px;
+		    }
 		</style>
 	<body>
 		<?php
-			include '../../Controller/categoriesController.php';
-			$categoriesArray=loadCategoriesData(true, true);
+			$productID="";
+			if(isset($_GET["id"])){
+				$productID= $_GET["id"];
+			}
+			include '../../Controller/productsController.php';
+			$productsArray=getProductsInfo($productID, true, true);
 		?>
 		<div class="container col-sm-12">
-			<div class="row" style="border: solid; height:200px;">
-				
-			</div>
 			<nav class="navbar navbar-inverse">
 			  <div class="container-fluid">
 			    <div class="navbar-header">
@@ -51,12 +53,6 @@
 			      <li class="active"><a href="#">Home</a></li>
 			      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <span class="caret"></span></a>
 			        <ul class="dropdown-menu">
-			        <?php
-			        	for($i=0; $i<count($categoriesArray); $i++){
-			        		echo '<li><a class="categories" data-type="'.$categoriesArray[$i]['CategoryName'].'" href="">'.$categoriesArray[$i]['CategoryName'].'</a></li>';
-
-			        	}  
-			        ?>
 			        </ul>
 			      </li>
 			      <li><a href="#">Page 2</a></li>
@@ -66,31 +62,21 @@
 			</nav>
 			<div class="row">
 				<div class="col-sm-3 detail">
-					<form style="margin-bottom: 20px;">
-		            <span class="form-group" style="display: inline-block;">
-		              <label for="">ProductName: </label>
-		              <input type="text" class="form-control" id="productName" width="200px">
-		            </span>
-		            <span class="form-group" style="display: inline-block;">
-		              <label for="">CategoryName: </label>
-		              <input type="text" class="form-control" id="categoryName">
-		            </span>
-		            <br>
-		            <span class="form-group" style="display: inline-block;">
-		              <label for="">PRICE FROM </label>
-		              <input type="text" class="form-control" id="fromPrice" width="200px">
-		            </span>
-		            <span class="form-group" style="display: inline-block;">
-		              <label for="">TO </label>
-		              <input type="text" class="form-control" id="toPrice">
-		            </span>
-		            <br>
-		            <button type="button" class="btn btn-primary search">Search</button>
-		         </form>
+					
 				</div>
 				<div class="col-sm-9 detail">
 					<div class="row header">
 						<h1>PRODUCTS</h1>
+						<div class="col-sm-6">
+							<?php
+								echo '<img src="http://localhost/onlineShop/onlineShop/Image/products/'.$productsArray[0]['Image'].'" style="width: 500px; border: solid">';
+							?>
+						</div>
+						<div class="col-sm-6">
+							<strong> <?php echo $productsArray[0]['ProductName']; ?></strong>
+							<h2> Price: <?php echo $productsArray[0]['Price']; ?>$</h2>
+						</div>
+						<a href='http://localhost/onlineShop/onlineShop/Controller/cartController.php?id=<?php echo $productsArray[0]['ProductID']; ?>&action=addToCart'><button style="width: 200px; height: 50px; font-size: 20px;" class="btn btn-info">ADD TO CART</button></a>
 					</div>
 					<div class="PLP">
 						
