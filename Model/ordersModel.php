@@ -48,4 +48,34 @@
 		mysqli_close($conn);
 		return $Array;
 	}
+
+	function getOrderInfoModel(){
+		include '../../Helper/databaseHelper.php';
+		$sql='SELECT * FROM orders, orderstatus WHERE orders.Status = orderstatus.orderStatusID';
+		$conn = connectToDB();
+		$result = mysqli_query($conn, $sql);
+		$Array = array();
+		if (mysqli_num_rows($result)>0) {
+			while ($row=mysqli_fetch_assoc($result)) {
+				array_push($Array, $row);
+			}
+		}
+		disconnectToDB($conn);
+		return $Array;	
+	}
+
+	function getOrderDetailsInfoModel($orderID){
+		include '../../Helper/databaseHelper.php';
+		$sql='SELECT * FROM orderdetails, product WHERE orderdetails.OrderID ='.$orderID.' AND orderdetails.ProductID= product.ProductID';
+		$conn = connectToDB();
+		$result = mysqli_query($conn, $sql);
+		$Array = array();
+		if (mysqli_num_rows($result)>0) {
+			while ($row=mysqli_fetch_assoc($result)) {
+				array_push($Array, $row);
+			}
+		}
+		disconnectToDB($conn);
+		return $Array;	
+	}
 ?>

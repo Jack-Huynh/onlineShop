@@ -22,6 +22,7 @@
 	if(isset($_POST["description"])){
 		$description=$_POST["description"];
 	}
+
 	function loadCategoriesData($flagConn, $flagDisconn) {
 		include '../../Model/categoriesModel.php';
 		$categoriesArray = array();

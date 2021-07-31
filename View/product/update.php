@@ -69,7 +69,7 @@
 					SAVE
 				</h5>
 			</button>
-			<a href="http://localhost/onlineShop/onlineShop/View/products/"><button type="button" class="btn btn-danger">
+			<a href="http://localhost/onlineShop/onlineShop/View/product/"><button type="button" class="btn btn-danger">
 				<h5>
 					CANCEL
 				</h5>

@@ -17,15 +17,8 @@
 	function createOrders($customername, $address, $phone, $total, $secCode) {
 		include '../Model/ordersModel.php';
 		createOrdersModel($customername, $address, $phone, $total, $secCode);
-		//header("Location: http://localhost/onlineShop/onlineShop/View/checkout/");
+		header("Location: http://localhost/onlineShop/onlineShop/View/checkout/");
 	}
-	/*
-	function createOrderDetails($orderID, $productID, $quantity, $sum) {
-		include '../Model/ordersModel.php';
-		createOrderDetailsModel($orderID, $productID, $quantity, $sum);
-		//header("Location: http://localhost/onlineShop/onlineShop/View/checkout/");
-	}
-	*/
 	if($action=="sendInfo") {
 		session_start();
 		$n = count($_SESSION["cart"]);
@@ -41,11 +34,6 @@
 		$ordersArray = getOrderIdModel($secCode);
 		$orderID = $ordersArray[0]["OrderID"];
 		for ($i=0; $i <$n ; $i++) {
-			/*
-			$value = $quantity - $_SESSION["cart"][$i]['Quantity'];
-			$_SESSION["cart"][$i]['Quantity']+=$value;
-			$_SESSION["cart"][$i]['Sum']=$_SESSION["cart"][$i]['Quantity']*$_SESSION["cart"][$i]['Price'];
-			*/
 			$productID=$_SESSION["cart"][$i]['ProductID'];
 			$quantity=$_SESSION["cart"][$i]['Quantity'];
 			$sum=$_SESSION["cart"][$i]['Sum'];
