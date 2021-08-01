@@ -16,9 +16,15 @@
 	  </style>
 </head>
 <body>
+	<?php
+		$user='';
+		if(isset($_GET["user"])){
+		    $user=$_GET["user"];
+		}  
+	?>
 	<h1 style="text-align: center">CREATE</h1>
 	<div class="container">
-		<form id="formLogin" action="../../Controller/userController.php?action=create" method="POST">
+		<form id="formLogin" action="../../Controller/userController.php?action=create&user=<?php echo $user?>" method="POST">
 			<div class="form-group">
 				<label for="textbox" style="text-align: left;">CustomerName: </label>
 				<input type="text" name="CustomerName" class="form-control" id="CustomerName">

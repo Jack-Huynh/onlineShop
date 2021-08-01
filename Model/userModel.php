@@ -59,4 +59,16 @@
 		disconnectToDB($conn);
 		return $result;
 	}
+	function checkAccountModel($userName, $password) {
+		include '../Helper/databaseHelper.php';
+		$query = 'SELECT * FROM customers WHERE customers.Username = "'.$userName.'" AND customers.Password = "'.$password.'"';
+		$conn = connectToDB();
+		$result = mysqli_query($conn, $query);
+		disconnectToDB($conn);
+		if(mysqli_num_rows($result)>0){
+			return true;
+		} else {
+			return false;
+		}
+	}
 ?>

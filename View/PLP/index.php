@@ -37,6 +37,14 @@
 		<?php
 			include '../../Controller/categoriesController.php';
 			$categoriesArray=loadCategoriesData(true, true);
+			$error='1';
+			$userName='';
+			if(isset($_GET["error"])){
+				$error=$_GET["error"];
+			}
+			if(isset($_GET["customer"])){
+				$userName=$_GET["customer"];
+			}
 		?>
 		<div class="container col-sm-12">
 			<div class="row" style="border: solid; height:200px;">
@@ -62,6 +70,20 @@
 			      <li><a href="#">Page 2</a></li>
 			      <li><a href="#">Page 3</a></li>
 			    </ul>
+			    <?php
+			    	if($error==0){
+			    		echo '<ul class="nav navbar-nav navbar-right">
+      							<li>
+      								<a href="http://localhost/onlineShop/onlineShop/View/customerAccount/customerinfo.php"><span class="glyphicon glyphicon-user" style="font-size: 25px;font-weight: bold;"</span>'.$userName.'</a>
+      							</li>
+    						</ul>';
+			    	}else{
+    					echo '<ul class="nav navbar-nav navbar-right">
+      							<li><a href="http://localhost/onlineShop/onlineShop/View/user/create.php?user=customer"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      							<li><a href="http://localhost/onlineShop/onlineShop/View/customerAccount/loginPage.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    						  </ul>';
+			    	}
+			    ?>
 			  </div>
 			</nav>
 			<div class="row">

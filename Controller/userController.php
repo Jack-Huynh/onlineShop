@@ -11,9 +11,13 @@
 	$country='';
 	$userName='';
 	$password='';
+	$user='';
 
 	if(isset($_GET["action"])){
 		$action=$_GET["action"];
+	}
+	if(isset($_GET["user"])){
+		$user = $_GET["user"];
 	}
 	if(isset($_GET["id"])){
 		$id=$_GET["id"];
@@ -46,7 +50,7 @@
 		$password=$_POST["Password"];
 	}
 	if ($action=="create") {
-		createUser($customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password);
+		createUser($user, $customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password);
 	}
 	else if($action=="update"){
 		updateUser($customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password);
@@ -54,7 +58,9 @@
 	else if($action=="delete"){
 		deleteUser($id);
 	}
-
+	else if($action=="login"){
+		checkCustomerLogin ($userName, $password);
+	}
 	function loadUsersData() {
 		include '../../Model/userModel.php';
 		$userArray = array();
@@ -62,10 +68,15 @@
 		return $userArray;
 	} 	
 
-	function createUser($customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password) {
+	function createUser($user, $customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password) {
 		include '../Model/userModel.php';
 		createUserModel($customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password);
-		header("Location: http://localhost/onlineShop/onlineShop/View/user/");
+		if($user == "customer") {
+			header("Location: http://localhost/onlineShop/onlineShop/View/customerAccount/loginPage.php");
+		}
+		else{
+			header("Location: http://localhost/onlineShop/onlineShop/View/user/");
+		}
 	}
 
 	function getUserInfo($customerID){
@@ -87,5 +98,20 @@
 		deleteUserModel($customerID);
 		header("Location: http://localhost/onlineShop/onlineShop/View/user/");
 	}
-
+	function checkCustomerLogin ($userName, $password) {
+		include '../Model/userModel.php';
+		if(checkAccountModel($userName, $password)){
+			session_start();
+			$_SESSION["checkCustomerLogin"]=true;
+			$_SESSION["currentUser"]=$userName;
+			/*if($remember) {
+				setcookie('saveUser', $email, time() + 60*60*60, "/");
+				setcookie('savePassword', $psw, time() + 60*60*60, "/");
+			}*/
+			header("Location: http://localhost/onlineShop/onlineShop/View/PLP/?error=0&customer=".$userName."");
+		}
+		else{
+			header("Location: http://localhost/onlineShop/onlineShop/View/customerAccount/loginPage.php?error=1");
+		}
+	}
 ?>
