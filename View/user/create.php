@@ -20,7 +20,7 @@
 		$user='';
 		if(isset($_GET["user"])){
 		    $user=$_GET["user"];
-		}  
+		}
 	?>
 	<h1 style="text-align: center">CREATE</h1>
 	<div class="container">
@@ -68,6 +68,18 @@
 				</h5>
 			</button></a>
 		</form>
+		<?php
+		$error='';
+      if(isset($_GET["error"])){
+        $error=$_GET["error"];	
+      }
+      if($error==2) {
+        echo '<div class="alert alert-danger"><strong>Password more than 6 chars and less than 10 chars</strong></div>';
+      }
+      if($error==3) {
+        echo '<div class="alert alert-danger"><strong>Password has exist!</strong></div>';
+      }
+	?>
 	</div>
 </body>
 </html>

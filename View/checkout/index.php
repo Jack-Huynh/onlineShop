@@ -37,6 +37,8 @@
    			 margin-bottom: 40px;
 		}
 	</style>
+
+	<!-- verify cart -->
 	<body>
 		<div class="row" style="text-align: center;">
 			<h1>Order Summary</h1>
@@ -58,6 +60,13 @@
 			
 	  	<?php
 	  		session_start();
+	  		$userID = 0;
+            if(isset($_SESSION["userID"])){
+              $userID=$_SESSION["userID"];
+            }
+            include '../../Controller/userController.php';
+            $orderInfoArray = getUserInfo($userID);
+
 	  		if(!isset($_SESSION["cart"]) || count($_SESSION["cart"]) == 0){
 	  			echo "<h1>Cart is empty<h1>";
 	  		}
@@ -102,17 +111,17 @@
 				<form action="../../Controller/ordersController.php?action=sendInfo" method="post">
 				  <span class="form-group psw">
 				    <label>CustomerName:</label>
-				    <input type="" class="form-control" name ="customername">
+				    <input type="" class="form-control" name ="customername" value="<?php echo ($userID) ? $orderInfoArray[0]['CustomerName'] : ''?>">
 				  </span>
 				  <br>
 				  <span class="form-group psw">
 				    <label>Address:</label>
-				    <input type="" class="form-control" name="address">
+				    <input type="" class="form-control" name="address" value="<?php echo ($userID) ? $orderInfoArray[0]['Address'] : ''?>">
 				  </span>
 				  <br>
 				  <span class="form-group psw">
 				    <label>Phone:</label>
-				    <input type="" class="form-control" name="phone">
+				    <input type="" class="form-control" name="phone" value="<?php echo ($userID) ? $orderInfoArray[0]['Phone'] : ''?>"> 
 				  </span>
 				  <button type="submit" class="btn btn-success order">Send infomation</button>
 				</form>

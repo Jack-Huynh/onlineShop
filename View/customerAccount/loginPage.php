@@ -56,7 +56,7 @@ img.avatar {
 .container {
   padding: 16px;
   margin :0 auto;
-  width: 300px;
+  width: 310px;
 }
 
 span.psw {
@@ -98,20 +98,14 @@ span.psw {
           if(isset($_GET["error"])){
             $error=$_GET["error"];
           }
-          if(isset($_GET["login"])){
-            $login=$_GET["login"];
-          }
           if($error==1) {
-            echo '<div class="alert alert-danger"><strong>Wrong email or password</strong></div>';
-          }
-          if($login == "success"){
-            echo '<div class="alert alert-info"><strong>Register success!</strong></div>';
+            echo '<div class="alert alert-danger"><strong>Wrong username or password</strong></div>';
           }
     ?>
   </div>
   
   <div class="container" style="background-color:#f1f1f1">
-    <a href="http://localhost/onlineShop/onlineShop/View/login/registerPage.php">
+    <a href="http://localhost/onlineShop/onlineShop/View/user/create.php?user=customer">
       <button type="button" class="signUpbtn">Sign up</button>
     </a>
     <span class="psw">Forgot <a href="http://localhost/onlineShop/onlineShop/View/login/forgotPassword.php">password?</a></span>

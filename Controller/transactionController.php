@@ -24,10 +24,17 @@
 	if(isset($_POST["orderID"])){
 		$orderID=$_POST["orderID"];
 	}
-	function getOrderInfo() {
+	function getOrderInfo($customerID) {
 		include '../../Model/ordersModel.php';
 		$orderInfoArray=array();
-		$orderInfoArray=getOrderInfoModel();
+		$orderInfoArray=getOrderInfoModel($customerID);
+		return $orderInfoArray;
+		//header("Location: http://localhost/onlineShop/onlineShop/View/checkout/");
+	}
+	function getOrderInfo2($orderID) {
+		include '../../Model/ordersModel.php';
+		$orderInfoArray=array();
+		$orderInfoArray=getOrderInfoModel2($orderID);
 		return $orderInfoArray;
 		//header("Location: http://localhost/onlineShop/onlineShop/View/checkout/");
 	}
@@ -50,7 +57,23 @@
 		updateOrderStatusModel($orderStatusID, $orderID);
 		header("Location: http://localhost/onlineShop/onlineShop/View/transactions/");
 	}
+	function cancelOrder($orderID) {
+		include '../Model/orderStatusModel.php';
+		updateOrderStatusModel(2, $orderID);
+		header("Location: http://localhost/onlineShop/onlineShop/View/transactions/orderHistory.php");
+	}
+	function undoCancelOrder($orderID) {
+		include '../Model/orderStatusModel.php';
+		updateOrderStatusModel(0, $orderID);
+		header("Location: http://localhost/onlineShop/onlineShop/View/transactions/orderHistory.php");
+	}
 	if ($action=="update") {
 		updateOrderStatus($orderStatusID, $orderID);
+	}
+	if($action=="cancel"){
+		cancelOrder($orderID);
+	}
+	if($action=="undoCancel"){
+		undoCancelOrder($orderID);
 	}
 ?>

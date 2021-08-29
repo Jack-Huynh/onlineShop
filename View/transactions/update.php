@@ -24,7 +24,10 @@
 			}
 			include '../../Controller/transactionController.php';
 			$StatusArray = array();
-			$StatusArray=getOrderInfo($orderStatusID);
+			$StatusArray = getOrderInfo2($orderStatusID);
+			 echo "<pre>";
+   				print_r($StatusArray);
+  			 echo "</pre>";
 		?>
 		<form id="formLogin" action="../../Controller/transactionController.php?action=update" method="POST">
 			<div class="form-group">

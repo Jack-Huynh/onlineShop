@@ -26,8 +26,15 @@
 	}
 
 	function getUserInfoModel($customerID){
-		include '../../Helper/databaseHelper.php';
-		$conn = connectToDB();
+		$hostname='localhost';
+		$username='root';
+		$password='';
+		$dbname='myonlineshop';
+		$conn=mysqli_connect($hostname, $username, $password, $dbname);
+		if(!$conn) {
+			die('Khong the ket noi'.mysql_error($conn));
+			exit();
+		}
 		$sql='SELECT * FROM customers WHERE CustomerID = '.$customerID.'';
 		$result = mysqli_query($conn, $sql);
 		$userArray = array();
@@ -36,7 +43,7 @@
 				array_push($userArray, $row);
 			}
 		}
-		disconnectToDB($conn);
+		mysqli_close($conn);
 		return $userArray;
 		
 	}
@@ -60,15 +67,66 @@
 		return $result;
 	}
 	function checkAccountModel($userName, $password) {
-		include '../Helper/databaseHelper.php';
 		$query = 'SELECT * FROM customers WHERE customers.Username = "'.$userName.'" AND customers.Password = "'.$password.'"';
-		$conn = connectToDB();
+		$hostname='localhost';
+		$username='root';
+		$password='';
+		$dbname='myonlineshop';
+		$conn=mysqli_connect($hostname, $username, $password, $dbname);
+		if(!$conn) {
+			die('Khong the ket noi'.mysql_error($conn));
+			exit();
+		}
+
 		$result = mysqli_query($conn, $query);
-		disconnectToDB($conn);
+		$userArray=array();
+		mysqli_close($conn);
 		if(mysqli_num_rows($result)>0){
-			return true;
-		} else {
+			while ($row=mysqli_fetch_assoc($result)) {
+				array_push($userArray, $row);
+			}
+			return $userArray;
+		}
+		else {
 			return false;
 		}
 	}
-?>
+	function createCustomerModel($customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password) {
+		include '../Helper/databaseHelper.php';
+		$conn = connectToDB();
+		if(!checkExistPasswordModel($password)) {
+			return 3;
+		}
+		$query='INSERT INTO customers(CustomerID, CustomerName, ContactName, Address ,City, Postalcode, Country, Username, Password) VALUES("'.$customerID.'","'.$customerName.'","'.$contactName.'", "'.$address.'", "'.$city.'", "'.$postCode.'", "'.$country.'", "'.$userName.'", "'.$password.'")';
+		$result = mysqli_query($conn, $query);
+		disconnectToDB($conn);
+		if ($result) {
+			return 2;
+		} else {
+			return 0;
+		}
+		
+	}
+	function checkExistPasswordModel($password) {
+		include '../Helper/databaseHelper.php';
+		$conn = connectToDB();
+		$query = 'SELECT * FROM customers WHERE customers.Password = "'.$password.'"';
+		$result = mysqli_query($conn, $query);
+		disconnectToDB($conn);
+		if(mysqli_num_rows($result)>0){
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	function addAddressesModel($addressJson, $customerID){
+		$addressJson_=json_encode($addressJson);
+		include '../Helper/databaseHelper.php';
+		$query = 'UPDATE customers SET Addresses ='.$addressJson_.'WHERE customers.CustomerID ='.$customerID;
+		$conn = connectToDB();
+		$result = mysqli_query($conn, $query);
+		disconnectToDB($conn);
+	}
+
+

@@ -22,6 +22,10 @@
 			$CustomerID=$_GET["id"];
 		}
         $userArray = getUserInfo($CustomerID);
+        echo "hhhhhhhhhhhhhhhhhhh";
+        echo "<pre>";
+   		print_r($userArray);
+   		echo "</pre>";
      ?>
 	<h1 style="text-align: center">UPDATE</h1>
 	<div class="container">
@@ -55,6 +59,10 @@
 				<input type="text" name="Country" class="form-control" id="Country" value="<?php echo $userArray[0]['Country'] ?>">
 			</div>
 			<div class="form-group">
+				<label for="textbox" style="text-align: left;">Phone: </label>
+				<input type="text" name="Phone" class="form-control" id="Country" value="<?php echo $userArray[0]['Country'] ?>">
+			</div>
+			<div class="form-group">
 				<label for="textbox" style="text-align: left;">Username: </label>
 				<input type="text" name="Username" class="form-control" id="Username" value="<?php echo $userArray[0]['Username'] ?>">
 			</div>
@@ -74,5 +82,8 @@
 			</button></a>
 		</form>
 	</div>
+	<?php
+			echo "hhhhhhh";
+	?>
 </body>
 </html>

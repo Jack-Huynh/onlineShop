@@ -77,7 +77,7 @@
       <div class="container-fluid">
         <?php 
             include '../../Controller/transactionController.php';
-            $orderInfoArray = getOrderInfo();
+            $orderInfoArray = getOrderInfo('');
         ?>
         
         <div class="container" style="margin-left:25%">

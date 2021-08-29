@@ -46,7 +46,29 @@ $(document).ready(function(){
 				ProductListingPage(result);
 			}
 		}
+		$.ajax(object);	
+
+	$('.search').click(function(){
+		var productName = $("#productName").val();
+		var categoryName = $("#categoryName").val();
+		var fromPrice = $("#fromPrice").val();
+		var toPrice = $("#toPrice").val();
+		var object={
+			url:"/onlineShop/onlineShop/Controller/productsController.php?action=search",
+			type: "post",
+			dataType:"json",
+			data:{
+				productName: productName,
+				categoryName: categoryName,
+				fromPrice: fromPrice,
+				toPrice: toPrice
+			},
+			success:function(result){
+					ProductListingPage(result);
+			}
+		}
 		$.ajax(object);
+	});
 	$('.categories').click(function(event){
 		var categoryName = (this.getAttribute('data-type'));//value only for input
 		event.preventDefault();

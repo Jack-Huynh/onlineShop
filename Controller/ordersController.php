@@ -16,8 +16,11 @@
 	}
 	function createOrders($customername, $address, $phone, $total, $secCode) {
 		include '../Model/ordersModel.php';
-		createOrdersModel($customername, $address, $phone, $total, $secCode);
-		header("Location: http://localhost/onlineShop/onlineShop/View/checkout/");
+		$userID=0;
+		if(isset($_SESSION["userID"])){
+           $userID=$_SESSION["userID"];
+        }
+		createOrdersModel($userID, $customername, $address, $phone, $total, $secCode);
 	}
 	if($action=="sendInfo") {
 		session_start();
@@ -40,6 +43,9 @@
 			createOrderDetailsModel($orderID, $productID, $quantity, $sum);
 		}
 		
+		//reset cart
+
+		header("Location: http://localhost/onlineShop/onlineShop/View/PDP/orderSuccess.php");
 	}
 
 

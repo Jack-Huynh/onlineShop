@@ -65,7 +65,6 @@
 
 		$result = mysqli_query($conn, $query);
 		disconnectToDB($conn);
-		return $query;
 	}
 	function deleteProductsModel($productID) {
 		include '../Helper/databaseHelper.php';

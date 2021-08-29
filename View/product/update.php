@@ -24,7 +24,7 @@
 			}
 			include '../../Controller/productsController.php';
 			$productsArray = array();
-			$productsArray=getProductsInfo($productID, true, false); 
+			$productsArray=getProductsInfo($productID, true, false);
 		?>
 		<form id="formLogin" action="../../Controller/productsController.php?action=update" method="POST">
 			<div class="form-group">

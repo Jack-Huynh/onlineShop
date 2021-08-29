@@ -44,13 +44,13 @@
 				<tbody>
 			
 	  	<?php
+	  		$total=0;
 	  		session_start();
 	  		if(!isset($_SESSION["cart"]) || count($_SESSION["cart"]) == 0){
 	  			echo "<h1>Cart is empty<h1>";
 	  		}
 	  		else{
 	  			$n=count($_SESSION["cart"]);
-	  			$total=0;
 	  			$sum;
 		 		for ($i=0; $i<$n ; $i++) {
 		 			echo '<tr>';
@@ -74,7 +74,7 @@
 	  				<td></td>
 	  				<td></td>
 	  				<td class="total">Total :<?php echo $total?> </td>
-	  				<td><a href="http://localhost/onlineShop/onlineShop/View/checkout/"><button class="btn btn-info but">Place order</button></a></td>
+	  				<td><br><a href="http://localhost/onlineShop/onlineShop/View/checkout/"><button <?php echo ($total==0) ? 'disabled' : ''?> class="btn btn-info but">Place order</button></a></td>
 	  			</tr>
 				</tbody>
 	    	</table>

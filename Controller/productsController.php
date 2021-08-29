@@ -73,7 +73,7 @@
 		include '../Model/productsModel.php';
 		$productsArray = array();
 		$productsArray = searchProductsModel($productName, $categoryName, $fromPrice, $toPrice);
-		die(json_encode($productsArray));
+	die(json_encode($productsArray));
 	}
 	if ($action=="create") {
 		createProducts($productName, $supplierID, $categoryID, $price, $image);
