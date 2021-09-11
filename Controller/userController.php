@@ -61,8 +61,14 @@
 	if(isset($_POST["phone"])){
 		$phone=$_POST["phone"];
 	}
+	if(isset($_POST["index"])){
+		$index=$_POST["index"];
+	}
 	if ($action=="create") {
-		createCustomer($user, $customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password);
+		$addresses=defaultAddresses($address, $phone);
+
+		createCustomer($user, $customerID, $customerName, $contactName, $address, $addresses, $city, $postCode, $country, $userName, $password);
+		//defaultAddresses($address, $phone);
 	}
 	else if($action=="update"){
 		updateUser($user, $customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password);
@@ -81,10 +87,17 @@
 		header("Location:http://localhost/onlineShop/onlineShop/View/customerAccount/loginPage.php");
 	}
 	else if($action=="getAddresses"){
+		//defaultAddresses();
 		getAddresses();
 	}
 	else if($action=="addAddresses"){
 		addAddresses($addressName, $addresses, $phone);
+	}
+	else if($action=="deleteAddresses"){
+		deleteAddresses($index);
+	}
+	else if($action=="changeDefaultAddresses"){
+		changeDefaultAddresses($index);
 	}
 	function loadUsersData() {
 		include '../../Model/userModel.php';
@@ -93,9 +106,9 @@
 		return $userArray;
 	} 	
 
-	function createUser($user, $customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password) {
+	function createUser($user, $customerID, $customerName, $contactName, $address,$addresses, $city, $postCode, $country, $userName, $password) {
 		include '../Model/userModel.php';
-		createUserModel($customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password);
+		createUserModel($customerID, $customerName, $contactName, $address, $addresses, $city, $postCode, $country, $userName, $password);
 			header("Location: http://localhost/onlineShop/onlineShop/View/user/");
 	}
 
@@ -140,12 +153,13 @@
 			header("Location: http://localhost/onlineShop/onlineShop/View/customerAccount/loginPage.php?error=1");
 		}
 	}
-	function createCustomer($user, $customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password) {
+	function createCustomer($user, $customerID, $customerName, $contactName, $address,$addresses, $city, $postCode, $country, $userName, $password) {
 		include '../Model/userModel.php';
 		if (6 >= strlen($password) || strlen($password) > 10) {
 			header("Location: http://localhost/onlineShop/onlineShop/View/user/create.php?error=2");
 		} else {
-			$result =createCustomerModel($customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password);
+			$result =createCustomerModel($customerID, $customerName, $contactName, $address,$addresses, $city, $postCode, $country, $userName, $password);
+			echo $result;
 			if($result == 2 && $user=="customer") {
 				header("Location: http://localhost/onlineShop/onlineShop/View/customerAccount/loginPage.php");
 			}
@@ -157,6 +171,19 @@
 			}
 		}
 	}
+    function defaultAddresses($address, $phone){
+    	$addressName="Default";
+    	$addressObj = (object)[];
+    	$addressObj->AddressName = $addressName;
+    	$addressObj->Addresses = $address;
+    	$addressObj->Phone = $phone;
+    	$addressObj->isDefault = true;
+    	//step_2
+    	$addressArray=array();
+    	array_push($addressArray, $addressObj);
+    	return $addressJson=json_encode($addressArray);
+    	//addAddressesModel($addressJson, $userID);
+    }
     function getAddresses(){
     	session_start();
 		$userID='';
@@ -169,7 +196,7 @@
     	echo $myArray[0]['Addresses'];
     }
 
-    function addAddresses($addressName, $addresses, $phone){
+     function addAddresses($addressName, $addresses, $phone){
     	//step_1
     	$addressObj = (object)[];
     	$addressObj->AddressName = $addressName;
@@ -191,4 +218,48 @@
     	addAddressesModel($addressJson_, $userID);
     	echo $addressJson_;
     }
+
+    function deleteAddresses($index){
+    	session_start();
+		$userID='';
+		if(isset($_SESSION["userID"])){
+       		$userID=$_SESSION["userID"];
+    	}
+    	include '../Model/userModel.php';
+    	$myArray=array();
+    	$myArray=getUserInfoModel($userID);
+    	$addressJson=$myArray[0]['Addresses'];
+    	$addressArray=json_decode($addressJson);
+    	unset($addressArray[$index]);
+    	$testArray=array_values($addressArray);
+    	$addressJson_=json_encode($testArray);
+    	addAddressesModel($addressJson_, $userID);
+    	echo $addressJson_;
+    }
+
+   function changeDefaultAddresses($index){
+   		session_start();
+		$userID='';
+		if(isset($_SESSION["userID"])){
+       		$userID=$_SESSION["userID"];
+    	}
+    	include '../Model/userModel.php';
+    	$myArray=array();
+    	$myArray=getUserInfoModel($userID);
+    	$addressJson=$myArray[0]['Addresses'];
+    	$addressArray=json_decode($addressJson);
+    	for($i=0; $i<count($addressArray); $i++){
+    		if($i==$index){
+    			$addressArray[$i]->isDefault=true;
+    			$Addresses=$addressArray[$i]->Addresses;
+    			$Phone=$addressArray[$i]->Phone;
+    			updateAddressDefaultModel($userID, $Addresses, $Phone);
+    		}else{
+    			$addressArray[$i]->isDefault=false;
+    		}
+    	}
+    	$addressJson_=json_encode($addressArray);
+    	addAddressesModel($addressJson_, $userID);
+    	echo $addressJson_;
+   }
 ?>

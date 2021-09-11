@@ -15,10 +15,10 @@
 		return $userArray;
 	}
 	
-	function createUserModel($customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password) {
+	function createUserModel($customerID, $customerName, $contactName, $address, $addresses, $city, $postCode, $country, $userName, $password) {
 		include '../Helper/databaseHelper.php';
 		$conn = connectToDB();
-		$query='INSERT INTO customers(CustomerID, CustomerName, ContactName, Address ,City, Postalcode, Country, Username, Password) VALUES("'.$customerID.'","'.$customerName.'","'.$contactName.'", "'.$address.'", "'.$city.'", "'.$postCode.'", "'.$country.'", "'.$userName.'", "'.$password.'")';
+		$query='INSERT INTO customers(CustomerID, CustomerName, ContactName, Address, Addresses ,City, Postalcode, Country, Username, Password) VALUES("'.$customerID.'","'.$customerName.'","'.$contactName.'", "'.$address.'", "'.$addresses.'", "'.$city.'", "'.$postCode.'", "'.$country.'", "'.$userName.'", "'.$password.'")';
 
 		$result = mysqli_query($conn, $query);
 		disconnectToDB($conn);
@@ -91,13 +91,17 @@
 			return false;
 		}
 	}
-	function createCustomerModel($customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password) {
+	function createCustomerModel($customerID, $customerName, $contactName, $address,$addresses, $city, $postCode, $country, $userName, $password) {
 		include '../Helper/databaseHelper.php';
 		$conn = connectToDB();
+		/*
 		if(!checkExistPasswordModel($password)) {
 			return 3;
 		}
-		$query='INSERT INTO customers(CustomerID, CustomerName, ContactName, Address ,City, Postalcode, Country, Username, Password) VALUES("'.$customerID.'","'.$customerName.'","'.$contactName.'", "'.$address.'", "'.$city.'", "'.$postCode.'", "'.$country.'", "'.$userName.'", "'.$password.'")';
+		*/
+		$query='INSERT INTO customers(CustomerID, CustomerName, ContactName, Address ,Addresses, City, Postalcode, Country, Username, Password) VALUES("'.$customerID.'","'.$customerName.'","'.$contactName.'", "'.$address.'", '."'".$addresses."'".',"'.$city.'", "'.$postCode.'", "'.$country.'", "'.$userName.'", "'.$password.'")';
+		//return $query;
+		
 		$result = mysqli_query($conn, $query);
 		disconnectToDB($conn);
 		if ($result) {
@@ -129,4 +133,21 @@
 		disconnectToDB($conn);
 	}
 
+	function updateAddressDefaultModel($customerID, $addresses, $phone) {
+		$hostname='localhost';
+		$username='root';
+		$password='';
+		$dbname='myonlineshop';
+		$conn=mysqli_connect($hostname, $username, $password, $dbname);
+		if(!$conn) {
+			die('Khong the ket noi'.mysql_error($conn));
+			exit();
+		}
+		$query = 'UPDATE customers SET Address = "'.$addresses.'", Phone = "'.$phone.'" WHERE customers.CustomerID = '.$customerID;
+
+		$result = mysqli_query($conn, $query);
+		mysqli_close($conn);
+		return $query;
+	}
+?>
 

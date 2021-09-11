@@ -50,6 +50,10 @@
 				<input type="text" name="Country" class="form-control" id="Country">
 			</div>
 			<div class="form-group">
+				<label for="textbox" style="text-align: left;">Phone: </label>
+				<input type="text" name="phone" class="form-control">
+			</div>
+			<div class="form-group">
 				<label for="textbox" style="text-align: left;">Username: </label>
 				<input type="text" name="Username" class="form-control" id="Username">
 			</div>
