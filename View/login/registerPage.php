@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src=""></script>
+    <script src="http://localhost/onlineShop/onlineShop/JavaScript/validateJavascript.js"></script>
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -79,20 +79,27 @@ a {
 </head>
 <body>
 
-<form action="../../Controller/loginController.php?action=register" method="POST">
+<form action="../../Controller/loginController.php?action=register" method="POST" id="formLogin">
   <div class="container">
     <h1>Register</h1>
     <p>Please fill in this form to create an account.</p>
     <hr>
 
-    <label for="email"><b>Email</b></label>
-    <input type="email" placeholder="Enter Email" name="email" id="email" required>
+    <div class="form-group">
+         <label for="email"><b>Email</b></label>
+        <input type="email" class="form-control phoneValidate" placeholder="Enter Email" required>
+        <div class="errMess" style="color: red"></div>
+    </div>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    <div class="form-group">
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    </div>
 
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="repsw" id="repsw" required>
+    <div class="form-group">
+      <label for="psw-repeat"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="repsw" id="repsw"  required>
+    </div>
     <?php
       $error='';
       if(isset($_GET["error"])){
@@ -108,7 +115,7 @@ a {
         echo '<div class="alert alert-danger"><strong>Email has exist!</strong></div>';
       }
     ?>
-    <button type="submit" class="registerbtn">Register</button>
+    <button type="button" class="registerbtn btn-save2">Register</button>
   </div>
   
   <div class="container signin">

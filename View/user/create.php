@@ -8,6 +8,7 @@
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	  <script src="http://localhost/onlineShop/onlineShop/JavaScript/validateJavascript.js"></script>
 	  <script src=""></script>
 	  <style type="text/css">
 	  	.container{
@@ -44,14 +45,17 @@
 			<div class="form-group">
 				<label for="textbox" style="text-align: left;">Postcode: </label>
 				<input type="text" name="PostalCode" class="form-control" id="Postalcode">
+				<div class="errMess" style="color: red"></div>
 			</div>
 			<div class="form-group">
 				<label for="textbox" style="text-align: left;">Country: </label>
 				<input type="text" name="Country" class="form-control" id="Country">
+				<div class="errMess" style="color: red"></div>
 			</div>
 			<div class="form-group">
 				<label for="textbox" style="text-align: left;">Phone: </label>
-				<input type="text" name="phone" class="form-control">
+				<input type="text" name="phone" class="form-control phoneValidate">
+				<div class="errMess" style="color: red"></div>
 			</div>
 			<div class="form-group">
 				<label for="textbox" style="text-align: left;">Username: </label>
@@ -61,11 +65,11 @@
 				<label for="pwd" style="text-align: left;">Password: </label>
 				<input type="textbox" name="Password" class="form-control" id="pwd">
 			</div>
-			<button type="submit" class="btn btn-primary btn-save">
+			<button type="button" class="btn btn-primary btn-save2" >
 				<h5>
 					SAVE
 				</h5>
-			</button>
+			</button>	
 			<a href="http://localhost/onlineShop/onlineShop/View/user/"><button type="button" class="btn btn-danger">
 				<h5>
 					CANCEL
