@@ -20,14 +20,11 @@
 	<div class="container">
 		<?php
 			if(isset($_GET["id"])){
-				$orderStatusID=$_GET["id"];
+				$orderID=$_GET["id"];
 			}
 			include '../../Controller/transactionController.php';
 			$StatusArray = array();
-			$StatusArray = getOrderInfo2($orderStatusID);
-			 echo "<pre>";
-   				print_r($StatusArray);
-  			 echo "</pre>";
+			$StatusArray = getOrderInfo2($orderID);
 		?>
 		<form id="formLogin" action="../../Controller/transactionController.php?action=update" method="POST">
 			<div class="form-group">

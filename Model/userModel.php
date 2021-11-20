@@ -15,10 +15,10 @@
 		return $userArray;
 	}
 	
-	function createUserModel($customerID, $customerName, $contactName, $address, $addresses, $city, $postCode, $country, $userName, $password) {
+	function createUserModel($customerID, $customerName, $contactName, $address, $addresses, $city, $postCode, $country, $phone, $userName, $password) {
 		include '../Helper/databaseHelper.php';
 		$conn = connectToDB();
-		$query='INSERT INTO customers(CustomerID, CustomerName, ContactName, Address, Addresses ,City, Postalcode, Country, Username, Password) VALUES("'.$customerID.'","'.$customerName.'","'.$contactName.'", "'.$address.'", "'.$addresses.'", "'.$city.'", "'.$postCode.'", "'.$country.'", "'.$userName.'", "'.$password.'")';
+		$query='INSERT INTO customers(CustomerID, CustomerName, ContactName, Address, Addresses ,City, Postalcode, Country, Phone, Username, Password) VALUES("'.$customerID.'","'.$customerName.'","'.$contactName.'", "'.$address.'", "'.$addresses.'", "'.$city.'", "'.$postCode.'", "'.$country.'", "'.$country.'", "'.$userName.'", "'.$password.'")';
 
 		$result = mysqli_query($conn, $query);
 		disconnectToDB($conn);
@@ -48,10 +48,10 @@
 		
 	}
 
-	function updateUserModel($customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password) {
+	function updateUserModel($customerID, $customerName, $address, $contactName, $city, $postCode, $country, $phone, $userName, $password) {
 		include '../Helper/databaseHelper.php';
 		$conn = connectToDB();
-		$query = 'UPDATE customers SET CustomerName = "'.$customerName.'", ContactName = "'.$contactName.'", Address = "'.$address.'", City = "'.$city.'", PostalCode = "'.$postCode.'", Country = "'.$country.'", Username = "'.$userName.'", Password = "'.$password.'" WHERE customers.CustomerID = '.$customerID;
+		$query = 'UPDATE customers SET CustomerName = "'.$customerName.'", ContactName = "'.$contactName.'", Address = "'.$address.'", City = "'.$city.'", PostalCode = "'.$postCode.'", Country = "'.$country.'", Phone = "'.$phone.'" Username = "'.$userName.'", Password = "'.$password.'" WHERE customers.CustomerID = '.$customerID;
 
 		$result = mysqli_query($conn, $query);
 		disconnectToDB($conn);
@@ -91,7 +91,7 @@
 			return false;
 		}
 	}
-	function createCustomerModel($customerID, $customerName, $contactName, $address,$addresses, $city, $postCode, $country, $userName, $password) {
+	function createCustomerModel($customerID, $customerName, $contactName, $address,$addresses, $city, $postCode, $country, $phone, $userName, $password) {
 		include '../Helper/databaseHelper.php';
 		$conn = connectToDB();
 		/*
@@ -99,7 +99,7 @@
 			return 3;
 		}
 		*/
-		$query='INSERT INTO customers(CustomerID, CustomerName, ContactName, Address ,Addresses, City, Postalcode, Country, Username, Password) VALUES("'.$customerID.'","'.$customerName.'","'.$contactName.'", "'.$address.'", '."'".$addresses."'".',"'.$city.'", "'.$postCode.'", "'.$country.'", "'.$userName.'", "'.$password.'")';
+		$query='INSERT INTO customers(CustomerID, CustomerName, ContactName, Address ,Addresses, City, Postalcode, Country, Phone, Username, Password) VALUES("'.$customerID.'","'.$customerName.'","'.$contactName.'", "'.$address.'", '."'".$addresses."'".',"'.$city.'", "'.$postCode.'", "'.$country.'", "'.$phone.'", "'.$userName.'", "'.$password.'")';
 		//return $query;
 		
 		$result = mysqli_query($conn, $query);

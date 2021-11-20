@@ -87,13 +87,14 @@ a {
 
     <div class="form-group">
          <label for="email"><b>Email</b></label>
-        <input type="email" class="form-control phoneValidate" placeholder="Enter Email" required>
+        <input type="email" class="form-control emailValidate" placeholder="Enter Email" required>
         <div class="errMess" style="color: red"></div>
     </div>
 
     <div class="form-group">
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+      <input type="password" placeholder="Enter Password" name="psw" id="psw" class="form-control pwdValidate" required>
+      <div class="errMess" style="color: red"></div>
     </div>
 
     <div class="form-group">

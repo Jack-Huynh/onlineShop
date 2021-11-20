@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+	<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,10 +13,11 @@
 
   <!-- Bootstrap core CSS -->
   <link href="http://localhost/onlineShop/onlineShop/CSS/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <!-- Custom styles for this template -->
   <link href="http://localhost/onlineShop/onlineShop/CSS/simple-sidebar.css" rel="stylesheet">
-
+  <script src="http://localhost/onlineShop/onlineShop/JavaScript/dashboardJavascript.js"></script>
 
 </head>
 <style type="text/css">
@@ -75,50 +77,73 @@
 
       <div class="container-fluid">
         <?php 
-            include '../../Controller/userController.php';
-            $userArray = loadUsersData();
-        ?>
+            include '../../Model/dashboardModel.php';
+            $Statistic = getQuantity();
+        ?>  
         
         <div class="container" style="margin-left:25%">
           <table class="table">
             <thead>
-              <th>CustomerID</th>
-              <th>CustomerName</th>
-              <th>ContactName</th>
-              <th>Address</th>
-              <th>City</th>
-              <th>PostalCode</th>
-              <th>Country</th>
-              <th>Phone</th>
-              <th>Username</th>
-              <th>Password</th>
-              <th>ACTION</th>
             </thead>
             <tbody>
               <?php
-                for ($i=0; $i < count($userArray); $i++) {
-                  echo "<tr>";
-                    echo "<td>".$userArray[$i]['CustomerID']."</td>";
-                    echo "<td>".$userArray[$i]['CustomerName']."</td>";
-                    echo "<td>".$userArray[$i]['ContactName']."</td>";
-                    echo "<td>".$userArray[$i]['Address']."</td>";
-                    echo "<td>".$userArray[$i]['City']."</td>";
-                    echo "<td>".$userArray[$i]['PostalCode']."</td>";
-                    echo "<td>".$userArray[$i]['Country']."</td>";
-                    echo "<td>".$userArray[$i]['Phone']."</td>";
-                    echo "<td>".$userArray[$i]['Username']."</td>";
-                    echo "<td>".$userArray[$i]['Password']."</td>";
-                    echo '<td class="actionButton">'.'<a href="http://localhost/onlineShop/onlineShop/View/user/update.php?id='.$userArray[$i]['CustomerID'].'"><button type="button" style="" class="btn btn-info btn-update">UPDATE</button></a>';
-                    echo '<a style="margin-left: 2px" href="http://localhost/onlineShop/onlineShop/Controller/userController.php?action=delete&id='.$userArray[$i]['CustomerID'].'"><button type="button" class="btn btn-danger btn-del">DELETE</button></a>'."</td>";
+                    echo "<tr>";
+                      echo "<td>"."Quantity of product: "."</td>";
+                    echo "<td>".$Statistic->quantityProduct."</td>";
                     echo "</tr>";
-                }  
+                    echo "<tr>";
+                      echo "<td>"."Sold: "."</td>";
+                    echo "<td>".$Statistic->quantitySold."</td>";
+                    echo "</tr>";
+                    echo "<tr>";
+                      echo "<td>"."Order: "."</td>";
+                    echo "<td>".$Statistic->quantityOrder."</td>";
+                    echo "</tr>";
+                    echo "<tr>";
+                      echo "<td>"."Total: "."</td>";
+                    echo "<td>".$Statistic->Total."</td>";
+                    echo "</tr>";
+                    echo "<tr>";
+                      echo "<td><h5>"."Award Customer: "."</td>";
+                    echo "<td></td>";
+                    echo "</tr>";
+                    echo "<tr>";
+                      echo "<td>"."CustomerName: "."</td>";
+                    echo "<td>".$Statistic->CustomerName."</td>";
+                    echo "</tr>";
+                    echo "<tr>";
+                      echo "<td>"."Phone: "."</td>";
+                    echo "<td>".$Statistic->Total."</td>";
+                    echo "</tr>";
+                    echo "<tr>";
+                      echo "<td>"."highestTotal: "."</td>";
+                    echo "<td>".$Statistic->highestTotal."</td>";
+                    echo "</tr>";
               ?>
+          <tr>
+            <td>
+              <div class="form-group">
+                <label for="textbox" style="text-align: left;">OrderStatus: </label>
+                <select class="form-control orderStatus" name="orderStatusID">
+                  <?php
+                    include '../../Controller/transactionController.php';
+                    $orderStatusArray = array();
+                    $orderStatusArray=getOrderStatusInfo();
+      
+                    for ($i=0; $i < count($orderStatusArray); $i++) {
+                                echo '<option value=" '.$orderStatusArray[$i]['orderStatusID'].'">';
+                                echo $orderStatusArray[$i]['statusName'];
+                                echo '</option>';
+                    }
+                  ?>
+                  
+                </select>
+              </div>
+            </td>
+            <td class="statusQuantity"></td>
+          </tr>
             </tbody>
         </table>
-
-        <a href="http://localhost/onlineShop/onlineShop/View/user/create.php"><button type="button" style="" class="btn btn-success btn-add">
-            ADD
-        </button></a>
         </div>
       </div>
     </div>
@@ -141,4 +166,4 @@
 
 </body>
 
-</html>
+</html>  

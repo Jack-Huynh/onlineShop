@@ -67,11 +67,11 @@
 	if ($action=="create") {
 		$addresses=defaultAddresses($address, $phone);
 
-		createCustomer($user, $customerID, $customerName, $contactName, $address, $addresses, $city, $postCode, $country, $userName, $password);
+		createCustomer($user, $customerID, $customerName, $contactName, $address, $addresses, $city, $postCode, $country, $phone, $userName, $password);
 		//defaultAddresses($address, $phone);
 	}
 	else if($action=="update"){
-		updateUser($user, $customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password);
+		updateUser($user, $customerID, $customerName, $address, $contactName, $city, $postCode, $country, $phone, $userName, $password);
 	}
 	else if($action=="delete"){
 		deleteUser($id);
@@ -106,9 +106,9 @@
 		return $userArray;
 	} 	
 
-	function createUser($user, $customerID, $customerName, $contactName, $address,$addresses, $city, $postCode, $country, $userName, $password) {
+	function createUser($user, $customerID, $customerName, $contactName, $address,$addresses, $city, $postCode, $country, $phone, $userName, $password) {
 		include '../Model/userModel.php';
-		createUserModel($customerID, $customerName, $contactName, $address, $addresses, $city, $postCode, $country, $userName, $password);
+		createUserModel($customerID, $customerName, $contactName, $address, $addresses, $city, $postCode, $country, $phone, $userName, $password);
 			header("Location: http://localhost/onlineShop/onlineShop/View/user/");
 	}
 
@@ -119,9 +119,9 @@
 		return $userArray;
 	}
 
-	function updateUser($user, $customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password) {
+	function updateUser($user, $customerID, $customerName, $address, $contactName, $city, $postCode, $country, $phone, $userName, $password) {
 		include '../Model/userModel.php';
-		updateUserModel($customerID, $customerName, $address, $contactName, $city, $postCode, $country, $userName, $password);
+		updateUserModel($customerID, $customerName, $address, $contactName, $city, $postCode, $country, $phone, $userName, $password);
 		if($user=="customer"){
 			header("Location: http://localhost/onlineShop/onlineShop/View/customerAccount/customerinfo.php");
 		}else{
@@ -153,13 +153,12 @@
 			header("Location: http://localhost/onlineShop/onlineShop/View/customerAccount/loginPage.php?error=1");
 		}
 	}
-	function createCustomer($user, $customerID, $customerName, $contactName, $address,$addresses, $city, $postCode, $country, $userName, $password) {
+	function createCustomer($user, $customerID, $customerName, $contactName, $address,$addresses, $city, $postCode, $country, $phone, $userName, $password) {
 		include '../Model/userModel.php';
 		if (6 >= strlen($password) || strlen($password) > 10) {
 			header("Location: http://localhost/onlineShop/onlineShop/View/user/create.php?error=2");
 		} else {
-			$result =createCustomerModel($customerID, $customerName, $contactName, $address,$addresses, $city, $postCode, $country, $userName, $password);
-			echo $result;
+			$result =createCustomerModel($customerID, $customerName, $contactName, $address,$addresses, $city, $postCode, $country, $phone, $userName, $password);
 			if($result == 2 && $user=="customer") {
 				header("Location: http://localhost/onlineShop/onlineShop/View/customerAccount/loginPage.php");
 			}

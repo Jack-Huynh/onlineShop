@@ -7,10 +7,7 @@
 	    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	    	
 	      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 			
 		<style type="text/css">
@@ -164,6 +161,10 @@
 			<div class="form-group">
 				<label for="textbox" style="text-align: left;">Country: </label>
 				<input type="text" name="Country" class="form-control" id="Country" value="<?php echo $userArray[0]['Country'] ?>">
+			</div>
+			<div class="form-group">
+				<label for="textbox" style="text-align: left;">Phone: </label>
+				<input type="text" name="Phone" class="form-control" id="Phone" value="<?php echo $userArray[0]['Phone'] ?>">
 			</div>
 			<div class="form-group">
 				<label for="textbox" style="text-align: left;">Username: </label>
