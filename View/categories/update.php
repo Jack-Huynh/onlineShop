@@ -32,7 +32,7 @@
 			</div>
 			<div class="form-group">
 				<label for="textbox" style="text-align: left;">ParentID: </label>
-				<input type="text" name="description" class="form-control" value="<?php echo $Array[0]['ParentID'] ?>">
+				<input type="text" name="parentID" class="form-control" value="<?php echo $Array[0]['ParentID'] ?>">
 			</div>
 			<div class="form-group">
 				<label for="textbox" style="text-align: left;">CategoriesName: </label>

@@ -116,7 +116,7 @@
             </tbody>
         </table>
 
-        <a href="http://localhost/onlineShop/onlineShop/View/user/create.php"><button type="button" style="" class="btn btn-success btn-add">
+        <a href="http://localhost/onlineShop/onlineShop/View/user/create.php?user=admin"><button type="button" style="" class="btn btn-success btn-add">
             ADD
         </button></a>
         </div>

@@ -82,6 +82,7 @@ span.psw {
     <img src="http://localhost/onlineShop/onlineShop/Image/img_avatar2.png" alt="Avatar" class="avatar">
   </div>
   <div class="container">
+    <h3>Welcome admin!</h3>
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Email" name="email" value="<?php 
             echo isset($_COOKIE["saveUser"]) ? $_COOKIE["saveUser"] : '' ?>" required>

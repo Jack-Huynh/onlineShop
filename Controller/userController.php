@@ -58,7 +58,7 @@
 	if(isset($_POST["addresses"])){
 		$addresses=$_POST["addresses"];
 	}
-	if(isset($_POST["phone"])){
+	if(isset($_POST["Phone"])){
 		$phone=$_POST["phone"];
 	}
 	if(isset($_POST["index"])){
@@ -143,10 +143,10 @@
 			$_SESSION["checkCustomerLogin"]=true;
 			$_SESSION["currentUser"]=$userName;
 			$_SESSION["userID"]=$userArray[0]['CustomerID'];
-			/*if($remember) {
-				setcookie('saveUser', $email, time() + 60*60*60, "/");
-				setcookie('savePassword', $psw, time() + 60*60*60, "/");
-			}*/
+			if($remember) {
+				//setcookie('saveUser', $email, time() + 60*60*60, "/");
+				//setcookie('savePassword', $psw, time() + 60*60*60, "/");
+			}
 			header("Location: http://localhost/onlineShop/onlineShop/View/PLP/");
 		}
 		else{
@@ -156,7 +156,7 @@
 	function createCustomer($user, $customerID, $customerName, $contactName, $address,$addresses, $city, $postCode, $country, $phone, $userName, $password) {
 		include '../Model/userModel.php';
 		if (6 >= strlen($password) || strlen($password) > 10) {
-			header("Location: http://localhost/onlineShop/onlineShop/View/user/create.php?error=2");
+			header("Location: http://localhost/onlineShop/onlineShop/View/user/create.php?error=2&user=$user");
 		} else {
 			$result =createCustomerModel($customerID, $customerName, $contactName, $address,$addresses, $city, $postCode, $country, $phone, $userName, $password);
 			if($result == 2 && $user=="customer") {
@@ -166,7 +166,7 @@
 				header("Location: http://localhost/onlineShop/onlineShop/View/user/");
 			}
 			else if ($result == 3) {
-				header("Location: http://localhost/onlineShop/onlineShop/View/user/create.php?error=3");
+				header("Location: http://localhost/onlineShop/onlineShop/View/user/create.php?error=3&user=$user");
 			}
 		}
 	}

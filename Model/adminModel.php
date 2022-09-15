@@ -31,6 +31,7 @@
 	}
 
 	function checkExistEmailModel($email) {
+		//echo $email."hi";
 		$query = 'SELECT * FROM admin WHERE admin.Email = "'.$email.'"';
 		$conn = connectToDB();
 		$result = mysqli_query($conn, $query);

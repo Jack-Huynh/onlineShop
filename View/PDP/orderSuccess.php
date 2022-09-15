@@ -16,6 +16,12 @@
 </head>
 <body>
 	<h1 style="text-align: center">ORDER SUCCESS</h1>
+	<p>Need more development on this page.
+	<a href="http://localhost/onlineshop/onlineshop/View/PLP/"><button type="button" class="btn btn-danger">
+				<h5>
+					BACK
+				</h5>
+			</button></a>	
 	
 </body>
 </html>

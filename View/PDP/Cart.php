@@ -42,12 +42,11 @@
 
 				</thead>
 				<tbody>
-			
 	  	<?php
 	  		$total=0;
 	  		session_start();
 	  		if(!isset($_SESSION["cart"]) || count($_SESSION["cart"]) == 0){
-	  			echo "<h1>Cart is empty<h1>";
+	  			echo "<h1 style='margin: 20px;'>Cart is empty<h1>";
 	  		}
 	  		else{
 	  			$n=count($_SESSION["cart"]);

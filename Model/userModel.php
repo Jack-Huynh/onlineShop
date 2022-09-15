@@ -32,7 +32,7 @@
 		$dbname='myonlineshop';
 		$conn=mysqli_connect($hostname, $username, $password, $dbname);
 		if(!$conn) {
-			die('Khong the ket noi'.mysql_error($conn));
+			die('Cannot connect'.mysql_error($conn));
 			exit();
 		}
 		$sql='SELECT * FROM customers WHERE CustomerID = '.$customerID.'';
@@ -51,7 +51,7 @@
 	function updateUserModel($customerID, $customerName, $address, $contactName, $city, $postCode, $country, $phone, $userName, $password) {
 		include '../Helper/databaseHelper.php';
 		$conn = connectToDB();
-		$query = 'UPDATE customers SET CustomerName = "'.$customerName.'", ContactName = "'.$contactName.'", Address = "'.$address.'", City = "'.$city.'", PostalCode = "'.$postCode.'", Country = "'.$country.'", Phone = "'.$phone.'" Username = "'.$userName.'", Password = "'.$password.'" WHERE customers.CustomerID = '.$customerID;
+		$query = 'UPDATE customers SET CustomerName = "'.$customerName.'", ContactName = "'.$contactName.'", Address = "'.$address.'", City = "'.$city.'", PostalCode = "'.$postCode.'", Country = "'.$country.'", Phone = "'.$phone.'", Username = "'.$userName.'", Password = "'.$password.'" WHERE customers.CustomerID = '.$customerID;
 
 		$result = mysqli_query($conn, $query);
 		disconnectToDB($conn);
@@ -74,7 +74,7 @@
 		$dbname='myonlineshop';
 		$conn=mysqli_connect($hostname, $username, $password, $dbname);
 		if(!$conn) {
-			die('Khong the ket noi'.mysql_error($conn));
+			die('Cannot connect'.mysql_error($conn));
 			exit();
 		}
 
@@ -140,7 +140,7 @@
 		$dbname='myonlineshop';
 		$conn=mysqli_connect($hostname, $username, $password, $dbname);
 		if(!$conn) {
-			die('Khong the ket noi'.mysql_error($conn));
+			die('Cannot connect'.mysql_error($conn));
 			exit();
 		}
 		$query = 'UPDATE customers SET Address = "'.$addresses.'", Phone = "'.$phone.'" WHERE customers.CustomerID = '.$customerID;

@@ -6,7 +6,7 @@
 		$dbname='myonlineshop';
 		$conn=mysqli_connect($hostname, $username, $password, $dbname);
 		if(!$conn) {
-			die('Khong the ket noi'.mysql_error($conn));
+			die('Cannot connect'.mysql_error($conn));
 			exit();
 		}
 		return $conn;	

@@ -15,11 +15,11 @@
 
 	    if( $success == true )
 	    {
-	        echo "Đã gửi mail thành công...";
+	        echo "Sent mail successfully...";
 	    }
 	    else
 	    {
-	        echo "Không gửi đi được...";
+	        echo "Can not send...";
 	    }
 	}
 	function sendMailForgotPassword($email, $id){

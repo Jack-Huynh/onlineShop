@@ -9,7 +9,6 @@
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	  <script src="http://localhost/onlineShop/onlineShop/JavaScript/validateJavascript.js"></script>
-	  <script src=""></script>
 	  <style type="text/css">
 	  	.container{
 	  		width: 400px;
@@ -63,18 +62,23 @@
 			</div>
 			<div class="form-group">
 				<label for="pwd" style="text-align: left;">Password: </label>
-				<input type="textbox" name="Password" class="form-control" id="pwd">
+				<input type="password" name="Password" id="psw" class="form-control pwdValidate" required>
+      			<div class="errMess" style="color: red"></div>
 			</div>
-			<button type="button" class="btn btn-primary btn-save2" >
-				<h5>
-					SAVE
-				</h5>
-			</button>	
-			<a href="http://localhost/onlineShop/onlineShop/View/user/"><button type="button" class="btn btn-danger">
-				<h5>
-					CANCEL
-				</h5>
-			</button></a>
+			<?php
+				$link=($user=="customer")?"PLP":"user";
+				echo'<button type="button" class="btn btn-primary btn-save2" >
+					<h5>
+						SAVE
+					</h5>
+				</button>
+				<a href="http://localhost/onlineShop/onlineShop/View/'."$link".'"><button type="button" class="btn btn-danger">
+					<h5>
+						CANCEL
+					</h5>
+				</button></a>';
+				
+			?>
 		</form>
 		<?php
 		$error='';

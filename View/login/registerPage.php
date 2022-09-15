@@ -87,7 +87,7 @@ a {
 
     <div class="form-group">
          <label for="email"><b>Email</b></label>
-        <input type="email" class="form-control emailValidate" placeholder="Enter Email" required>
+        <input type="email" class="form-control emailValidate" name="email" placeholder="Enter Email" required>
         <div class="errMess" style="color: red"></div>
     </div>
 

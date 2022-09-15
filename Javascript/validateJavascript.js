@@ -103,7 +103,7 @@ $(document).ready(function(){
 		}
 		else {
 			if(!checkPwd(data)){
-				$('.pwdValidate').parent().find('.errMess').html("Please enter password correctly");
+				$('.pwdValidate').parent().find('.errMess').html("Password must contain at least one character and one number");
 				$('.pwdValidate').parent().find('.errMess').addClass("showErrMess");
 			} else {
 				$('.pwdValidate').parent().find('.errMess').html("");
@@ -121,4 +121,3 @@ $(document).ready(function(){
 		}
 	});
 });
-
