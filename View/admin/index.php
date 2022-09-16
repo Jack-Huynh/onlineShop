@@ -21,6 +21,8 @@
 <style type="text/css">
   .container-fluid{
     margin-left: -26%;
+     z-index: 1;
+    position: relative;
   }
   .actionButton{
     width: 200px;
@@ -82,43 +84,16 @@
         <div class="container" style="margin-left:25%">
           <table class="table">
             <thead>
-              <th>CustomerID</th>
-              <th>CustomerName</th>
-              <th>ContactName</th>
-              <th>Address</th>
-              <th>City</th>
-              <th>PostalCode</th>
-              <th>Country</th>
-              <th>Phone</th>
-              <th>Username</th>
+              <th>AdminID</th>
+              <th>Email</th>
               <th>Password</th>
-              <th>ACTION</th>
+              <th>Status</th>
+              <th>Action</th>
             </thead>
             <tbody>
-              <?php
-                for ($i=0; $i < count($userArray); $i++) {
-                  echo "<tr>";
-                    echo "<td>".$userArray[$i]['CustomerID']."</td>";
-                    echo "<td>".$userArray[$i]['CustomerName']."</td>";
-                    echo "<td>".$userArray[$i]['ContactName']."</td>";
-                    echo "<td>".$userArray[$i]['Address']."</td>";
-                    echo "<td>".$userArray[$i]['City']."</td>";
-                    echo "<td>".$userArray[$i]['PostalCode']."</td>";
-                    echo "<td>".$userArray[$i]['Country']."</td>";
-                    echo "<td>".$userArray[$i]['Phone']."</td>";
-                    echo "<td>".$userArray[$i]['Username']."</td>";
-                    echo "<td>".$userArray[$i]['Password']."</td>";
-                    echo '<td class="actionButton">'.'<a href="http://localhost/onlineShop/onlineShop/View/user/update.php?id='.$userArray[$i]['CustomerID'].'"><button type="button" style="" class="btn btn-info btn-update">UPDATE</button></a>';
-                    echo '<a style="margin-left: 2px" href="http://localhost/onlineShop/onlineShop/Controller/userController.php?action=delete&id='.$userArray[$i]['CustomerID'].'"><button type="button" class="btn btn-danger btn-del">DELETE</button></a>'."</td>";
-                    echo "</tr>";
-                }  
-              ?>
+              
             </tbody>
         </table>
-
-        <a href="http://localhost/onlineShop/onlineShop/View/user/create.php?user=admin"><button type="button" style="" class="btn btn-success btn-add">
-            ADD
-        </button></a>
         </div>
       </div>
     </div>
@@ -130,6 +105,7 @@
   <!-- Bootstrap core JavaScript -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script src="http://localhost/onlineShop/onlineShop/JavaScript/bootstrap.bundle.min.js"></script>
+   <script src="http://localhost/onlineShop/onlineShop/JavaScript/adminJavaScript.js"></script>
 
   <!-- Menu Toggle Script -->
   <script>

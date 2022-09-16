@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+	<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -75,50 +76,44 @@
 
       <div class="container-fluid">
         <?php 
-            include '../../Controller/userController.php';
-            $userArray = loadUsersData();
+            include '../../Controller/transactionController.php';
+            $orderInfoArray = getOrderInfo('');
         ?>
         
         <div class="container" style="margin-left:25%">
           <table class="table">
             <thead>
-              <th>CustomerID</th>
-              <th>CustomerName</th>
-              <th>ContactName</th>
-              <th>Address</th>
-              <th>City</th>
-              <th>PostalCode</th>
-              <th>Country</th>
-              <th>Phone</th>
-              <th>Username</th>
-              <th>Password</th>
-              <th>ACTION</th>
+            	<th>OrderID</th>
+            	<th>CustomerName</th>
+            	<th>Address</th>
+            	<th>Phone</th>
+            	<th>OrderDate</th>
+            	<th>Total</th>
+              	<th>OrderStatusID</th>
+              	<th>StatusName</th>
+              	<th>Description</th>
+              	<th>Action</th>
             </thead>
             <tbody>
               <?php
-                for ($i=0; $i < count($userArray); $i++) {
-                  echo "<tr>";
-                    echo "<td>".$userArray[$i]['CustomerID']."</td>";
-                    echo "<td>".$userArray[$i]['CustomerName']."</td>";
-                    echo "<td>".$userArray[$i]['ContactName']."</td>";
-                    echo "<td>".$userArray[$i]['Address']."</td>";
-                    echo "<td>".$userArray[$i]['City']."</td>";
-                    echo "<td>".$userArray[$i]['PostalCode']."</td>";
-                    echo "<td>".$userArray[$i]['Country']."</td>";
-                    echo "<td>".$userArray[$i]['Phone']."</td>";
-                    echo "<td>".$userArray[$i]['Username']."</td>";
-                    echo "<td>".$userArray[$i]['Password']."</td>";
-                    echo '<td class="actionButton">'.'<a href="http://localhost/onlineShop/onlineShop/View/user/update.php?id='.$userArray[$i]['CustomerID'].'"><button type="button" style="" class="btn btn-info btn-update">UPDATE</button></a>';
-                    echo '<a style="margin-left: 2px" href="http://localhost/onlineShop/onlineShop/Controller/userController.php?action=delete&id='.$userArray[$i]['CustomerID'].'"><button type="button" class="btn btn-danger btn-del">DELETE</button></a>'."</td>";
+                for ($i=0; $i < count($orderInfoArray); $i++) {
+                    echo "<tr>";
+                    echo "<td>".$orderInfoArray[$i]['OrderID']."</td>";
+                    echo "<td>".$orderInfoArray[$i]['CustomerName']."</td>";
+                    echo "<td>".$orderInfoArray[$i]['Address']."</td>";
+                    echo "<td>".$orderInfoArray[$i]['Phone']."</td>";
+                    echo "<td>".$orderInfoArray[$i]['OrderDate']."</td>";
+                    echo "<td>".$orderInfoArray[$i]['Total']."</td>";
+                    echo "<td>".$orderInfoArray[$i]['orderStatusID']."</td>";
+                    echo "<td>".$orderInfoArray[$i]['statusName']."</td>";
+                    echo "<td>".$orderInfoArray[$i]['Description']."</td>";
+                    echo '<td style="width: 280px" class="actionButton">'.'<a href="http://localhost/onlineShop/onlineShop/View/transactions/update.php?id='.$orderInfoArray[$i]['OrderID'].'"><button type="button" " class="btn btn-info btn-update">Update Status</button></a>';
+                    echo '<a href="http://localhost/onlineShop/onlineShop/View/transactions/orderDetails.php?id='.$orderInfoArray[$i]['OrderID'].'"><button type="button" style= "margin-left:2px;" class="btn btn-success">View Details</button></a>'."</td>";
                     echo "</tr>";
-                }  
+                }
               ?>
             </tbody>
         </table>
-
-        <a href="http://localhost/onlineShop/onlineShop/View/user/create.php?user=admin"><button type="button" style="" class="btn btn-success btn-add">
-            ADD
-        </button></a>
         </div>
       </div>
     </div>
@@ -141,4 +136,4 @@
 
 </body>
 
-</html>
+</html>  

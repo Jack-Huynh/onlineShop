@@ -1,0 +1,10 @@
+-  echo "<pre>";
+   print_r($myArray);
+   echo "</pre>";
+-  include '../Helper/databaseHelper.php';
+-  test :  http://localhost/onlineShop/onlineShop/Model/userModel.php
+-  http://localhost/onlineShop/onlineShop/CSS/bootstrap.min.css
+-  ajax : url:"/onlineShop/onlineShop/Controller/adminController.php?action=loadPage"
+-  how to config sendmail.ini : https://123host.vn/tailieu/kb/vps/huong-dan-cau-hinh-gui-mail-bang-php-cho-xampp.html
+-  value only for input
+-  <a data-id="123">link</a>  -> js :  $(this).attr("data-id")

@@ -75,48 +75,36 @@
 
       <div class="container-fluid">
         <?php 
-            include '../../Controller/userController.php';
-            $userArray = loadUsersData();
+            include '../../Controller/categoriesController.php';
+            $categoriesArray = loadCategoriesData(true, true);
         ?>
         
         <div class="container" style="margin-left:25%">
           <table class="table">
             <thead>
-              <th>CustomerID</th>
-              <th>CustomerName</th>
-              <th>ContactName</th>
-              <th>Address</th>
-              <th>City</th>
-              <th>PostalCode</th>
-              <th>Country</th>
-              <th>Phone</th>
-              <th>Username</th>
-              <th>Password</th>
+              <th>CatergoryID</th>
+              <th>ParentID</th>
+              <th>CategoryName</th>
+              <th>Description</th>
               <th>ACTION</th>
             </thead>
             <tbody>
               <?php
-                for ($i=0; $i < count($userArray); $i++) {
-                  echo "<tr>";
-                    echo "<td>".$userArray[$i]['CustomerID']."</td>";
-                    echo "<td>".$userArray[$i]['CustomerName']."</td>";
-                    echo "<td>".$userArray[$i]['ContactName']."</td>";
-                    echo "<td>".$userArray[$i]['Address']."</td>";
-                    echo "<td>".$userArray[$i]['City']."</td>";
-                    echo "<td>".$userArray[$i]['PostalCode']."</td>";
-                    echo "<td>".$userArray[$i]['Country']."</td>";
-                    echo "<td>".$userArray[$i]['Phone']."</td>";
-                    echo "<td>".$userArray[$i]['Username']."</td>";
-                    echo "<td>".$userArray[$i]['Password']."</td>";
-                    echo '<td class="actionButton">'.'<a href="http://localhost/onlineShop/onlineShop/View/user/update.php?id='.$userArray[$i]['CustomerID'].'"><button type="button" style="" class="btn btn-info btn-update">UPDATE</button></a>';
-                    echo '<a style="margin-left: 2px" href="http://localhost/onlineShop/onlineShop/Controller/userController.php?action=delete&id='.$userArray[$i]['CustomerID'].'"><button type="button" class="btn btn-danger btn-del">DELETE</button></a>'."</td>";
+                for ($i=0; $i < count($categoriesArray); $i++) {
+                    echo "<tr>";
+                    echo "<td>".$categoriesArray[$i]['CategoryID']."</td>";
+                    echo "<td>".$categoriesArray[$i]['ParentID']."</td>";
+                    echo "<td>".$categoriesArray[$i]['CategoryName']."</td>";
+                    echo "<td>".$categoriesArray[$i]['Description']."</td>";
+                    echo '<td class="actionButton">'.'<a href="http://localhost/onlineShop/onlineShop/View/categories/update.php?id='.$categoriesArray[$i]['CategoryID'].'"><button type="button" style="" class="btn btn-info btn-update">UPDATE</button></a>';
+                    echo '<a style="margin-left: 2px" href="http://localhost/onlineShop/onlineShop/Controller/categoriesController.php?action=delete&id='.$categoriesArray[$i]['CategoryID'].'"><button type="button" class="btn btn-danger btn-del">DELETE</button></a>'."</td>";
                     echo "</tr>";
-                }  
+                }
               ?>
             </tbody>
         </table>
 
-        <a href="http://localhost/onlineShop/onlineShop/View/user/create.php?user=admin"><button type="button" style="" class="btn btn-success btn-add">
+        <a href="http://localhost/onlineShop/onlineShop/View/categories/create.php"><button type="button" style="" class="btn btn-success btn-add">
             ADD
         </button></a>
         </div>
