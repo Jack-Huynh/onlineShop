@@ -55,8 +55,8 @@
 			$_SESSION["checkLogin"]=true;
 			$_SESSION["currentEmail"]=$email;
 			if($remember) {
-				//setcookie('saveUser', $email, time() + 60*60*60, "/");
-				//setcookie('savePassword', $psw, time() + 60*60*60, "/");
+				setcookie('saveUser', $email, time() + 60*60*60, "/");
+				setcookie('savePassword', $psw, time() + 60*60*60, "/");
 			}
 			header("Location: http://localhost/onlineShop/onlineShop/View/user/");
 		}else{

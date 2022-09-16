@@ -15,6 +15,7 @@
 	$addressName='';
 	$addresses='';
 	$phone='';
+	$remember='';
 
 	if(isset($_GET["action"])){
 		$action=$_GET["action"];
@@ -59,11 +60,15 @@
 		$addresses=$_POST["addresses"];
 	}
 	if(isset($_POST["Phone"])){
-		$phone=$_POST["phone"];
+		$phone=$_POST["Phone"];
 	}
 	if(isset($_POST["index"])){
 		$index=$_POST["index"];
 	}
+	if(isset($_POST["remember"])){
+		$remember=$_POST["remember"];
+	}
+
 	if ($action=="create") {
 		$addresses=defaultAddresses($address, $phone);
 
@@ -77,7 +82,7 @@
 		deleteUser($id);
 	}
 	else if($action=="login"){
-		checkCustomerLogin ($userName, $password);
+		checkCustomerLogin ($userName, $password, $remember);
 	}
 	else if($action=="logout"){
 		session_start();
@@ -134,7 +139,7 @@
 		deleteUserModel($customerID);
 		header("Location: http://localhost/onlineShop/onlineShop/View/user/");
 	}
-	function checkCustomerLogin ($userName, $password) {
+	function checkCustomerLogin ($userName, $password, $remember) {
 		include '../Model/userModel.php';
 		if(checkAccountModel($userName, $password)){
 			$userArray=array();
@@ -144,8 +149,8 @@
 			$_SESSION["currentUser"]=$userName;
 			$_SESSION["userID"]=$userArray[0]['CustomerID'];
 			if($remember) {
-				//setcookie('saveUser', $email, time() + 60*60*60, "/");
-				//setcookie('savePassword', $psw, time() + 60*60*60, "/");
+				setcookie('saveUser', $userName, time() + 60*60*60, "/");
+				setcookie('savePassword', $password, time() + 60*60*60, "/");
 			}
 			header("Location: http://localhost/onlineShop/onlineShop/View/PLP/");
 		}

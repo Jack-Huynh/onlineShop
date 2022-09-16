@@ -42,7 +42,6 @@ $(document).ready(function(){
 			},
 			success:function(result){
 				addressesListing(result);
-				$('#closeButton').trigger("click");
 			}
 		}
 		$.ajax(object);
@@ -59,7 +58,7 @@ $(document).ready(function(){
 			data:{
 				addressName: addressName,
 				addresses: addresses,
-				phone: phone
+				Phone: phone
 			},
 			success:function(result){
 				addressesListing(result);
@@ -80,7 +79,6 @@ $(document).ready(function(){
 			},
 			success:function(result){
 				addressesListing(result);
-				$('#closeButton').trigger("click");
 			}
 		}
 		$.ajax(object);
