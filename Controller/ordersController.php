@@ -1,6 +1,6 @@
 <?php
 	$customername='';
-	$address='eee';
+	$address='';
 	$phone='';
 	if(isset($_POST["customername"])){
 		$customername=$_POST["customername"];
@@ -8,8 +8,8 @@
 	if(isset($_POST["address"])){
 		$address=$_POST["address"];
 	}
-	if(isset($_POST["phone"])){
-		$phone=$_POST["phone"];
+	if(isset($_POST["Phone"])){
+		$phone=$_POST["Phone"];
 	}
 	if(isset($_GET["action"])){
 		$action=$_GET["action"];
