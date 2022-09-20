@@ -53,7 +53,7 @@
 			</div>
 			<div class="form-group">
 				<label for="textbox" style="text-align: left;">Phone: </label>
-				<input type="text" name="phone" class="form-control phoneValidate">
+				<input type="text" name="Phone" class="form-control phoneValidate">
 				<div class="errMess" style="color: red"></div>
 			</div>
 			<div class="form-group">

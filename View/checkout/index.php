@@ -121,7 +121,7 @@
 				  <br>
 				  <span class="form-group psw">
 				    <label>Phone:</label>
-				    <input type="" class="form-control" name="phone" value="<?php echo ($userID) ? $orderInfoArray[0]['Phone'] : ''?>"> 
+				    <input type="" class="form-control" name="Phone" value="<?php echo ($userID) ? $orderInfoArray[0]['Phone'] : ''?>"> 
 				  </span>
 				  <button type="submit" class="btn btn-success order">Send infomation</button>
 				</form>
