@@ -3,4 +3,5 @@
 # apache for web server
 # mySQL for database
 # php and jquery for backend
-# html, css, js for frontend 
+# html, css, js for frontend
+# For practise purpose only
