@@ -17,7 +17,7 @@
 		$productsArray = getproductsInfoModel2($id, $flagConn, $flagDisconn);
 		session_start();
 		
-		if(!isset($_SESSION["cart"]) && count($_SESSION["cart"]) == 0){
+		if(!isset($_SESSION["cart"]) || count($_SESSION["cart"]) == 0){
 			$_SESSION["cart"][0] = array(
 				'ProductID' => $productsArray[0]['ProductID'],
 				'ProductName' => $productsArray[0]['ProductName'] ,
