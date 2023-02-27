@@ -1,5 +1,5 @@
 # onlineShop
-## This is a full-stack web application for selling sneakers. It includes an admin page and a customer page, allowing customers to browse and purchase sneakers while providing administrators with the ability to manage inventory and orders.
+## This is a full-stack website for selling sneakers. It includes an admin page and a customer page, allowing customers to browse and purchase sneakers while providing administrators with the ability to manage inventory and orders.
 ---
 ### Technologies Used
 This web application was built using the following technologies:
