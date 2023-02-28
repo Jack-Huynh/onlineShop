@@ -1,5 +1,5 @@
 # onlineShop
-## This is a full-stack web application for selling sneakers. It includes an admin page and a customer page, allowing customers to browse and purchase sneakers while providing administrators with the ability to manage inventory and orders.
+## This is a full-stack website for selling sneakers. It includes an admin page and a customer page, allowing customers to browse and purchase sneakers while providing administrators with the ability to manage inventory and orders.
 ---
 ### Technologies Used
 This web application was built using the following technologies:
@@ -8,7 +8,7 @@ This web application was built using the following technologies:
 - PHP for the backend
 - MySQL for the database
 - Apache for the web server
-- MVC(Module-View-Controller) nethodology
+- MVC(Module-View-Controller) methodology
 ### Getting Started
 To get started, you can use XAMPP to set up a local development environment for this web application:
 
@@ -19,7 +19,7 @@ To get started, you can use XAMPP to set up a local development environment for 
 - Configure the database connection settings in the config.php file.
 - Open a web browser and navigate to http://localhost/onlineShop/onlineShop/View/PLP/ for customer and http://localhost/onlineShop/onlineShop/View/admin/ for admin users.
 ### Usage
-Once the application is set up and running, customers can use it to:
+#### Once the application is set up and running, customers can use it to:
 
 - Register a new account or log in to an existing one.
 - View, update, delete, add their personal information.
@@ -27,7 +27,7 @@ Once the application is set up and running, customers can use it to:
 - View, update and delete their cart, as well as see the total cost of their purchases.
 - Place an order and view their order history.
 
-Meanwhile, administrators can use the application to:
+#### Meanwhile, administrators can use the application to:
 
 - Register a new account or log in to an existing one.
 - Manage inventory and orders by viewing, updating, or deleting products and orders.
