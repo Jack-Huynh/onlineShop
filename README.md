@@ -8,7 +8,7 @@ This web application was built using the following technologies:
 - PHP for the backend
 - MySQL for the database
 - Apache for the web server
-- MVC(Module-View-Controller) methodology
+- MVC(Module-View-Controller) architecture pattern
 ### Getting Started
 To get started, you can use XAMPP to set up a local development environment for this web application:
 

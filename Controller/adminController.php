@@ -1,5 +1,4 @@
 <?php
-//tessssssssssssssssssssssssssssssssssssssssssttttttttttttttttttttttttttttttttt
 	$action='';
 	$adminID='';
 	$email='';

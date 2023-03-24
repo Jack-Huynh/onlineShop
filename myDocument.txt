@@ -8,3 +8,6 @@
 -  how to config sendmail.ini : https://123host.vn/tailieu/kb/vps/huong-dan-cau-hinh-gui-mail-bang-php-cho-xampp.html
 -  value only for input
 -  <a data-id="123">link</a>  -> js :  $(this).attr("data-id")
+
+Note: 23/3/2023
+Can buy unlimited quantity? Since the product table does not have quantity control lol:))
