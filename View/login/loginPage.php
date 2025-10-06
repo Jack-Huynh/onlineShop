@@ -115,7 +115,7 @@ span.psw {
   
   <div class="container" style="background-color:#f1f1f1">
     <a href="http://localhost/onlineShop/onlineShop/View/login/registerPage.php">
-      <button type="button" class="signUpbtn">Sign up</button>
+      <button type="button" class="signUpbtn">Sign uppp</button>
     </a>
     <span class="psw">Forgot <a href="http://localhost/onlineShop/onlineShop/View/login/forgotPassword.php">password?</a></span>
   </div>
